@@ -40,7 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large unused assets
+# large unused assets (fichiers non utilisés dans le code)
 public/sam-cd-disc.gif
 public/sam-cd-disc-transparent.gif
 public/sam-cd-disc.webp
@@ -48,24 +48,24 @@ public/sam-cd-disc.png
 public/sam-cd-case.png
 public/staeky-card.jpg
 public/bbc-card.png
-public/mac\ spinning.gif
-public/bbc\ video\ presentation.mp4
+public/mac spinning.gif
+public/bbc video presentation.mp4
 
-# replaced by optimized versions
+# remplacés par versions optimisées WebP/WebM
 public/bonsai.png
 public/vagabond.png
-public/sam\ cd\ case.png
-public/sam\ cd.gif
-public/sam\ logo.gif
-public/sam\ projet.png
-public/sam\ archive1.png
-public/sam\ archive2.png
-public/bbc\ mockup.png
-public/bbc\ site.png
-public/bbc\ charte\ graphique.png
-public/bbc\ contact.png
-public/staeky\ presentation.png
-public/staeky\ mockup.png
-public/staeky\ site.png
+public/sam cd case.png
+public/sam cd.gif
+public/sam logo.gif
+public/sam projet.png
+public/sam archive1.png
+public/sam archive2.png
+public/bbc mockup.png
+public/bbc site.png
+public/bbc charte graphique.png
+public/bbc contact.png
+public/staeky presentation.png
+public/staeky mockup.png
+public/staeky site.png
 public/mac-spinning-opt.webm
 public/mac-spinning-opt.mp4
