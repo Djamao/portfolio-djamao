@@ -11,7 +11,7 @@ const footerLabel = {
   textTransform: 'uppercase',
   color: '#ffffff',
   display: 'block',
-  marginBottom: 0,
+  marginBottom: '40px',
 }
 
 const field = {
@@ -293,8 +293,8 @@ export default function Contact() {
           {[
             { label: 'Instagram', href: 'https://www.instagram.com/djamaoprr/',                i: 10 },
             { label: 'Linkedin',  href: 'https://www.linkedin.com/in/djamao-pierre-06733b325/', i: 11 },
-            { label: 'Twitter',   href: '#',                                                    i: 12 },
-            { label: 'TikTok',    href: '#',                                                    i: 13 },
+            { label: 'Twitter',   href: 'https://x.com/djamaopr',                               i: 12 },
+            { label: 'TikTok',    href: 'https://www.tiktok.com/@djamao_',                    i: 13 },
           ].map(r => (
             <a
               key={r.label}
