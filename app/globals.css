@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "ClashGrotesk";
+  src: url("/fonts/ClashGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "ClashGrotesk";
+  src: url("/fonts/ClashGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "ClashGrotesk";
+  src: url("/fonts/ClashGrotesk-Semibold.otf") format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "ClashGrotesk";
+  src: url("/fonts/ClashGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/fonts/CabinetGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+:root {
+  --font-clash: "ClashGrotesk", sans-serif;
+  --font-cabinet: "CabinetGrotesk", sans-serif;
+  --font-satoshi: "Satoshi", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+html {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+
+body {
+  font-family: var(--font-satoshi);
+}
+
+/* Contact form — placeholder on dark bg */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--font-satoshi);
+}
+
+/* Remove default button styles */
+button {
+  font-family: inherit;
+}
+
+/* Remove focus outline on nav links */
+a:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}

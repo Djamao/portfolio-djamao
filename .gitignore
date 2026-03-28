@@ -1,0 +1,71 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# large unused assets
+public/sam-cd-disc.gif
+public/sam-cd-disc-transparent.gif
+public/sam-cd-disc.webp
+public/sam-cd-disc.png
+public/sam-cd-case.png
+public/staeky-card.jpg
+public/bbc-card.png
+public/mac\ spinning.gif
+public/bbc\ video\ presentation.mp4
+
+# replaced by optimized versions
+public/bonsai.png
+public/vagabond.png
+public/sam\ cd\ case.png
+public/sam\ cd.gif
+public/sam\ logo.gif
+public/sam\ projet.png
+public/sam\ archive1.png
+public/sam\ archive2.png
+public/bbc\ mockup.png
+public/bbc\ site.png
+public/bbc\ charte\ graphique.png
+public/bbc\ contact.png
+public/staeky\ presentation.png
+public/staeky\ mockup.png
+public/staeky\ site.png
+public/mac-spinning-opt.webm
+public/mac-spinning-opt.mp4
