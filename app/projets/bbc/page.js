@@ -7,10 +7,11 @@ import VerticalWords from '../../components/VerticalWords'
 
 const ACCENT = '#C94B1F'
 const images = [
-  { src: '/bbc-thumb.webp',           alt: 'BBC' },
-  { src: '/bbc-mockup.webp',          alt: 'BBC mockup' },
+  { src: '/bbc-thumb.webp',            alt: 'BBC' },
+  { src: '/bbc-vod.webm',              alt: 'BBC présentation', isVideo: true },
+  { src: '/bbc-mockup.webp',           alt: 'BBC mockup' },
   { src: '/bbc-charte-graphique.webp', alt: 'BBC charte' },
-  { src: '/bbc-contact.webp',         alt: 'BBC contact' },
+  { src: '/bbc-contact.webp',          alt: 'BBC contact' },
 ]
 
 const label = { fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: ACCENT, marginBottom: '0.5rem', fontWeight: 600, display: 'block' }
@@ -53,7 +54,17 @@ export default function BBC() {
               transition={{ duration: 0.3 }}
               style={{ position: 'absolute', inset: 0 }}
             >
-              <Image src={activeImg.src} alt={activeImg.alt} fill sizes="calc(100vw - 580px)" style={{ objectFit: 'contain' }} priority />
+              {activeImg.isVideo ? (
+                <video
+                  autoPlay loop muted playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                >
+                  <source src="/bbc-vod.webm" type="video/webm" />
+                  <source src="/bbc-vod.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <Image src={activeImg.src} alt={activeImg.alt} fill sizes="calc(100vw - 580px)" style={{ objectFit: 'contain' }} priority />
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -86,7 +97,14 @@ export default function BBC() {
                   borderRadius: '2px',
                 }}
               >
-                <Image src={img.src} alt={img.alt} fill sizes="108px" style={{ objectFit: 'cover' }} />
+                {img.isVideo ? (
+                  <video muted playsInline loop style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}>
+                    <source src="/bbc-vod.webm" type="video/webm" />
+                    <source src="/bbc-vod.mp4" type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image src={img.src} alt={img.alt} fill sizes="108px" style={{ objectFit: 'cover' }} />
+                )}
               </div>
             )
           })}
