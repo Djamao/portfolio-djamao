@@ -7,7 +7,7 @@ import VerticalWords from '../../components/VerticalWords'
 
 const ACCENT = '#C94B1F'
 const images = [
-  { src: '/bbc-site.webp',            alt: 'BBC site' },
+  { src: '/bbc-thumb.webp',           alt: 'BBC' },
   { src: '/bbc-mockup.webp',          alt: 'BBC mockup' },
   { src: '/bbc-charte-graphique.webp', alt: 'BBC charte' },
   { src: '/bbc-contact.webp',         alt: 'BBC contact' },
