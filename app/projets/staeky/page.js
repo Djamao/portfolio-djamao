@@ -7,7 +7,7 @@ import VerticalWords from '../../components/VerticalWords'
 
 const ACCENT = '#4A6FE3'
 const images = [
-  { src: '/staeky.svg',               alt: 'Staeky', unoptimized: true },
+  { src: '/staeky-thumb.webp',        alt: 'Staeky' },
   { src: '/staeky-mockup.webp',       alt: 'Staeky mockup' },
   { src: '/staeky-site.webp',         alt: 'Staeky site' },
 ]
