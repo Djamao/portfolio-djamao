@@ -83,8 +83,8 @@ export default function About() {
               transformOrigin: 'center center',
             }}
           >
-            <source src="/mac-spinning.webm" type="video/webm" />
             <source src="/mac-spinning.mp4" type="video/mp4" />
+            <source src="/mac-spinning.webm" type="video/webm" />
           </video>
         </motion.div>
 
