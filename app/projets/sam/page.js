@@ -7,7 +7,7 @@ import VerticalWords from '../../components/VerticalWords'
 
 const ACCENT = '#7B4FA6'
 const images = [
-  { src: '/sam-projet.webp',   alt: 'Sam projet' },
+  { src: '/sam-thumb.webp',    alt: 'Sam Quiles' },
   { src: '/sam-logo.webp',     alt: 'Sam logo',  unoptimized: true },
   { src: '/sam-cd.webm',       alt: 'Sam CD',    isVideo: true },
   { src: '/sam-archive1.webp', alt: 'Sam archive 1' },

@@ -8,7 +8,7 @@ import Bonsai from '../components/Bonsai'
 const projects = [
   { id: 'staeky', name: 'STAEKY',           accent: '#4A6FE3', image: '/staeky-thumb.webp',       href: '/projets/staeky' },
   { id: 'bbc',    name: 'BAKERY BLISS CAFÉ', accent: '#C94B1F', image: '/bbc-thumb.webp',            href: '/projets/bbc'    },
-  { id: 'sam',    name: 'SAM QUILES',        accent: '#0a0a0a', image: '/sam-cd-case.webp',           href: '/projets/sam'    },
+  { id: 'sam',    name: 'SAM QUILES',        accent: '#0a0a0a', image: '/sam-thumb.webp',             href: '/projets/sam'    },
   { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/vagabond.webp',              href: '/projets/djamao' },
 ]
 
