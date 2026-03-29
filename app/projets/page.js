@@ -9,7 +9,7 @@ const projects = [
   { id: 'staeky', name: 'STAEKY',           accent: '#4A6FE3', image: '/staeky-thumb.webp',       href: '/projets/staeky' },
   { id: 'bbc',    name: 'BAKERY BLISS CAFÉ', accent: '#C94B1F', image: '/bbc-thumb.webp',            href: '/projets/bbc'    },
   { id: 'sam',    name: 'SAM QUILES',        accent: '#0a0a0a', image: '/sam-thumb.webp',             href: '/projets/sam'    },
-  { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/vagabond.webp',              href: '/projets/djamao' },
+  { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/mac-spinning.webm', isVideo: true, href: '/projets/djamao' },
 ]
 
 export default function ProjetsIndex() {
@@ -113,14 +113,24 @@ export default function ProjetsIndex() {
                   overflow: 'hidden',
                 }}
               >
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  sizes="300px"
-                  style={{ objectFit: 'cover' }}
-                  priority={isActive}
-                />
+                {project.isVideo ? (
+                  <video
+                    autoPlay loop muted playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                  >
+                    <source src="/mac-spinning.webm" type="video/webm" />
+                    <source src="/mac-spinning.mp4" type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    fill
+                    sizes="300px"
+                    style={{ objectFit: 'cover' }}
+                    priority={isActive}
+                  />
+                )}
               </div>
             )
           })}
@@ -172,13 +182,23 @@ export default function ProjetsIndex() {
                     transition: 'all 0.3s ease',
                   }}
                 >
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    sizes="60px"
-                    style={{ objectFit: 'cover' }}
-                  />
+                  {project.isVideo ? (
+                    <video
+                      autoPlay loop muted playsInline
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                    >
+                      <source src="/mac-spinning.webm" type="video/webm" />
+                      <source src="/mac-spinning.mp4" type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      sizes="60px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  )}
                 </div>
               </div>
             )
