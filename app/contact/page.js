@@ -11,7 +11,7 @@ const footerLabel = {
   textTransform: 'uppercase',
   color: '#ffffff',
   display: 'block',
-  marginBottom: '40px',
+  marginBottom: '80px',
 }
 
 const field = {
