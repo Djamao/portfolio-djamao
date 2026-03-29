@@ -9,7 +9,7 @@ const projects = [
   { id: 'staeky', name: 'STAEKY',           accent: '#4A6FE3', image: '/staeky-thumb.webp',       href: '/projets/staeky' },
   { id: 'bbc',    name: 'BAKERY BLISS CAFÉ', accent: '#C94B1F', image: '/bbc-thumb.webp',            href: '/projets/bbc'    },
   { id: 'sam',    name: 'SAM QUILES',        accent: '#0a0a0a', image: '/sam-thumb.webp',             href: '/projets/sam'    },
-  { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/mac-spinning.webm', isVideo: true, href: '/projets/djamao' },
+  { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/djamao-thumb.webm', isVideo: true, href: '/projets/djamao' },
 ]
 
 export default function ProjetsIndex() {
@@ -118,8 +118,8 @@ export default function ProjetsIndex() {
                     autoPlay loop muted playsInline
                     style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
                   >
-                    <source src="/mac-spinning.webm" type="video/webm" />
-                    <source src="/mac-spinning.mp4" type="video/mp4" />
+                    <source src="/djamao-thumb.webm" type="video/webm" />
+                    <source src="/djamao-thumb.mp4" type="video/mp4" />
                   </video>
                 ) : (
                   <Image
