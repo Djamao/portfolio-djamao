@@ -7,7 +7,8 @@ import VerticalWords from '../../components/VerticalWords'
 
 const ACCENT = '#2D5016'
 const images = [
-  { src: '/vagabond.webp', alt: 'Djamao portfolio' },
+  { src: '/mac-spinning.webm', alt: 'Mac spinning', isVideo: true },
+  { src: '/vagabond.webp',     alt: 'Djamao portfolio' },
 ]
 
 const label = { fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: ACCENT, marginBottom: '0.5rem', fontWeight: 600, display: 'block' }
@@ -36,20 +37,66 @@ export default function DjamaoPierre() {
         <VerticalWords name="DJAMAO PIERRE" color={ACCENT} size={90} />
       </div>
 
-      {/* Center — main image (no fan, single image) */}
-      <div style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#f5f5f0' }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeImg.src}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <Image src={activeImg.src} alt={activeImg.alt} fill sizes="calc(100vw - 580px)" style={{ objectFit: 'contain', padding: '2rem' }} priority />
-          </motion.div>
-        </AnimatePresence>
+      {/* Center — main media + strip */}
+      <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        {/* Main media */}
+        <div style={{ flex: 1, position: 'relative', overflow: 'hidden', backgroundColor: '#f5f5f0' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeImg.src}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ position: 'absolute', inset: 0 }}
+            >
+              {activeImg.isVideo ? (
+                <video
+                  autoPlay loop muted playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                >
+                  <source src="/mac-spinning.webm" type="video/webm" />
+                  <source src="/mac-spinning.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <Image src={activeImg.src} alt={activeImg.alt} fill sizes="calc(100vw - 580px)" style={{ objectFit: 'contain', padding: '2rem' }} priority />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Horizontal thumbnail strip */}
+        <div style={{ height: '120px', flexShrink: 0, borderTop: '1px solid #0a0a0a', display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', overflowX: 'auto' }}>
+          {images.map((img) => (
+            <button
+              key={img.src}
+              onClick={() => setActiveImg(img)}
+              style={{
+                width: '80px',
+                height: '96px',
+                position: 'relative',
+                flexShrink: 0,
+                cursor: 'pointer',
+                border: activeImg.src === img.src ? `1.5px solid ${ACCENT}` : '1.5px solid transparent',
+                opacity: activeImg.src === img.src ? 1 : 0.5,
+                transition: 'opacity 0.2s, border-color 0.2s',
+                padding: 0,
+                backgroundColor: '#f5f5f0',
+                borderRadius: '2px',
+                overflow: 'hidden',
+              }}
+            >
+              {img.isVideo ? (
+                <video muted playsInline loop style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}>
+                  <source src="/mac-spinning.webm" type="video/webm" />
+                  <source src="/mac-spinning.mp4" type="video/mp4" />
+                </video>
+              ) : (
+                <Image src={img.src} alt={img.alt} fill sizes="80px" style={{ objectFit: 'cover' }} />
+              )}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Right — info panel */}
