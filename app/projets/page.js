@@ -110,6 +110,8 @@ export default function ProjetsIndex() {
   const [activeIndex, setActiveIndex] = useState(null)
   const indexRef = useRef(null)
   const locked = useRef(false)
+  const accDelta = useRef(0)
+  const lastWheelTime = useRef(0)
   const router = useRouter()
 
   const go = useCallback((delta) => {
@@ -120,13 +122,31 @@ export default function ProjetsIndex() {
     locked.current = true
     setActiveIndex(next)
     indexRef.current = next
-    setTimeout(() => { locked.current = false }, 350)
+    setTimeout(() => { locked.current = false }, 500)
   }, [])
 
   useEffect(() => {
     const onWheel = (e) => {
       e.preventDefault()
-      go(e.deltaY > 0 ? 1 : -1)
+
+      // Molette physique (lignes/pages) → navigation directe
+      if (e.deltaMode !== 0) {
+        go(e.deltaY > 0 ? 1 : -1)
+        return
+      }
+
+      // Trackpad (pixels) → accumulation avec seuil
+      const now = Date.now()
+      if (now - lastWheelTime.current > 150) accDelta.current = 0
+      lastWheelTime.current = now
+
+      if (locked.current) return
+
+      accDelta.current += e.deltaY
+      if (Math.abs(accDelta.current) >= 50) {
+        go(accDelta.current > 0 ? 1 : -1)
+        accDelta.current = 0
+      }
     }
     window.addEventListener('wheel', onWheel, { passive: false })
     return () => window.removeEventListener('wheel', onWheel)
