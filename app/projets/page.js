@@ -50,8 +50,8 @@ const projects = [
 
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
-  const w = size === 'large' ? '80%' : isVideo ? '100%' : '44px'
-  const h = size === 'large' ? '400px' : isVideo ? '250px' : '48px'
+  const w = size === 'large' ? '80%' : isVideo ? '100%' : project.id === 'djamao' ? '58px' : '44px'
+  const h = size === 'large' ? '400px' : isVideo ? '250px' : project.id === 'djamao' ? '64px' : '48px'
   const filter = isVideo ? 'none'
     : project.id === 'djamao' ? (!isActive ? 'grayscale(1)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
@@ -67,7 +67,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? 'translateX(20px)' : 'none'
+    const blockShift = size !== 'large' ? 'translate(20px, -5px)' : 'none'
     return (
       <div style={containerStyle}>
         {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
