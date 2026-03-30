@@ -72,7 +72,7 @@ function ProjectLogo({ project, isActive, size }) {
           loop
           muted
           playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(6px, 2px)' }}
+          style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(5.5px, 1.5px)' }}
         >
           <source src={project.logo} type="video/webm" />
         </video>
