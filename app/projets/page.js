@@ -18,7 +18,7 @@ const projects = [
   {
     id: 'sam',
     name: 'SAM QUILES',
-    accent: '#0a0a0a',
+    accent: '#6B3A65',
     logo: '/sam-disc.webm',
     logoType: 'video',
     overlay: '/sam-cd-case.webp',
