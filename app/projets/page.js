@@ -62,29 +62,32 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    paddingLeft: isVideo && size !== 'large' ? '20px' : 0,
   }
 
   if (project.logoType === 'video') {
+    const blockShift = size !== 'large' ? 'translateX(20px)' : 'none'
     return (
       <div style={containerStyle}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(2.5px, -1px)' }}
-        >
-          <source src={project.logo} type="video/webm" />
-        </video>
-        {project.overlay && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={project.overlay}
-            alt=""
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
-          />
-        )}
+        {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
+        <div style={{ position: 'relative', width: '100%', height: '100%', transform: blockShift }}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(2.5px, -1px)' }}
+          >
+            <source src={project.logo} type="video/webm" />
+          </video>
+          {project.overlay && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={project.overlay}
+              alt=""
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
+            />
+          )}
+        </div>
       </div>
     )
   }
