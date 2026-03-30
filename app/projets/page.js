@@ -253,7 +253,7 @@ export default function ProjetsIndex() {
               >
                 {project.year}
               </p>
-              <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem' }}>
+              <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', marginTop: '0.75rem' }}>
                 {isActive ? '→' : '↓'}
               </p>
             </div>
