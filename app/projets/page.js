@@ -97,14 +97,15 @@ function ProjectLogo({ project, isActive, size }) {
 }
 
 export default function ProjetsIndex() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const indexRef = useRef(0)
+  const [activeIndex, setActiveIndex] = useState(null)
+  const indexRef = useRef(null)
   const locked = useRef(false)
   const router = useRouter()
 
   const go = useCallback((delta) => {
     if (locked.current) return
-    const next = Math.max(0, Math.min(projects.length - 1, indexRef.current + delta))
+    const current = indexRef.current ?? -1
+    const next = Math.max(0, Math.min(projects.length - 1, current + delta))
     if (next === indexRef.current) return
     locked.current = true
     setActiveIndex(next)
@@ -146,7 +147,7 @@ export default function ProjetsIndex() {
         return (
           <div
             key={project.id}
-            onClick={() => isActive ? router.push(project.href) : go(i - activeIndex)}
+            onClick={() => isActive ? router.push(project.href) : go(i - (activeIndex ?? -1))}
             style={{
               flexGrow: isActive ? 2 : 1,
               flexShrink: 0,
