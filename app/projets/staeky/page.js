@@ -13,7 +13,7 @@ const images = [
 ]
 
 const label = { fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: ACCENT, marginBottom: '0.5rem', fontWeight: 600, display: 'block' }
-const item  = { fontFamily: 'var(--font-satoshi)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
+const item  = { fontFamily: 'var(--font-cabinet)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
 
 export default function Staeky() {
   const [activeImg, setActiveImg] = useState(images[0])
@@ -22,7 +22,7 @@ export default function Staeky() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - 49px)',
         backgroundColor: '#ffffff',
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
@@ -32,7 +32,7 @@ export default function Staeky() {
       {/* Left — retour + vertical title */}
       <div style={{ borderRight: '1px solid #0a0a0a', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflow: 'hidden' }}>
         <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2, ease: 'easeOut' }} style={{ display: 'inline-block' }}>
-          <Link href="/projets" style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
+          <Link href="/projets" style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
             ← retour
           </Link>
         </motion.div>
@@ -117,13 +117,13 @@ export default function Staeky() {
             <h2 style={{ fontFamily: 'var(--font-clash)', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.01em', color: '#0a0a0a', marginBottom: '0.75rem', lineHeight: 1.2, textTransform: 'uppercase' }}>
               CRÉATION DU LOGO STAEKY
             </h2>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
               Staeky est une plateforme d&apos;organisation dédiée aux étudiants, centralisant gestion des tâches, emploi du temps et planification en un seul endroit.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
               La mission : un logo picogramme tech, centré sur le «&nbsp;S&nbsp;» de Staeky, dans un bleu défini par le client. En découpant le «&nbsp;S&nbsp;» au bon endroit, la forme laisse naturellement apparaître le symbole de l&apos;infini (∞).
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
               Février 2026
             </p>
           </div>

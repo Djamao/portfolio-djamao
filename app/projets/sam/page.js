@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import VerticalWords from '../../components/VerticalWords'
 
-const ACCENT = '#7B4FA6'
+const ACCENT = '#0a0a0a'
 const images = [
   { src: '/sam-thumb.webp',    alt: 'Sam Quiles' },
   { src: '/sam-logo.webp',     alt: 'Sam logo',  unoptimized: true },
@@ -15,7 +15,7 @@ const images = [
 ]
 
 const label = { fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: ACCENT, marginBottom: '0.5rem', fontWeight: 600, display: 'block' }
-const item  = { fontFamily: 'var(--font-satoshi)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
+const item  = { fontFamily: 'var(--font-cabinet)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
 
 export default function Sam() {
   const [activeImg, setActiveImg] = useState(images[0])
@@ -23,7 +23,7 @@ export default function Sam() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - 49px)',
         backgroundColor: '#ffffff',
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
@@ -33,7 +33,7 @@ export default function Sam() {
       {/* Left — retour + vertical title */}
       <div style={{ borderRight: '1px solid #0a0a0a', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflow: 'hidden' }}>
         <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2, ease: 'easeOut' }} style={{ display: 'inline-block' }}>
-          <Link href="/projets" style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
+          <Link href="/projets" style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
             ← retour
           </Link>
         </motion.div>
@@ -135,13 +135,13 @@ export default function Sam() {
             <h2 style={{ fontFamily: 'var(--font-clash)', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.01em', color: '#0a0a0a', marginBottom: '0.75rem', lineHeight: 1.2, textTransform: 'uppercase' }}>
               CRÉATION DU SITE WEB ET DU LOGO DE SAM QUILES
             </h2>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
               Sam Quiles est un photographe, filmmaker, sound creator et visual director, dont l&apos;univers artistique est fortement influencé par la culture hip-hop, les jeux vidéo et l&apos;art contemporain.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
               La mission : concevoir un portfolio en ligne immersif capable de réfléter son identité visuelle et la diversité de ses projets — interface dynamique et artistique, logo inclus.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
               Février 2026
             </p>
           </div>

@@ -11,7 +11,7 @@ const images = [
 ]
 
 const label = { fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: ACCENT, marginBottom: '0.5rem', fontWeight: 600, display: 'block' }
-const item  = { fontFamily: 'var(--font-satoshi)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
+const item  = { fontFamily: 'var(--font-cabinet)',  fontSize: '0.8rem',  color: '#0a0a0a', lineHeight: 1.4, letterSpacing: 0 }
 
 export default function DjamaoPierre() {
   const [activeImg, setActiveImg] = useState(images[0])
@@ -19,7 +19,7 @@ export default function DjamaoPierre() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - 49px)',
         backgroundColor: '#ffffff',
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
@@ -29,7 +29,7 @@ export default function DjamaoPierre() {
       {/* Left — retour + vertical title */}
       <div style={{ borderRight: '1px solid #0a0a0a', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflow: 'hidden' }}>
         <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2, ease: 'easeOut' }} style={{ display: 'inline-block' }}>
-          <Link href="/projets" style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
+          <Link href="/projets" style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
             ← retour
           </Link>
         </motion.div>
@@ -77,16 +77,16 @@ export default function DjamaoPierre() {
             <h2 style={{ fontFamily: 'var(--font-clash)', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.01em', color: '#0a0a0a', marginBottom: '0.75rem', lineHeight: 1.2, textTransform: 'uppercase' }}>
               CRÉATION DU PORTFOLIO DJAMAO PIERRE
             </h2>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0 }}>
               Djamao Pierre est designer digital français, nourri par le hiphop, la culture japonaise et le wabi-sabi. La mission : concevoir un portfolio qui reflète une identité forte — minimaliste mais énergique.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
               L&apos;univers visuel s&apos;est construit autour d&apos;un monochrome accentué : une base noir et blanc, avec une couleur Sanzo Wada propre à chaque projet. Le bonsaï comme fil rouge, la typographie verticale comme signature.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.8rem', color: '#0a0a0a', lineHeight: 1.5, letterSpacing: 0, marginTop: '0.75rem' }}>
               Un portfolio pensé comme un album — chaque page est une piste, chaque projet une énergie différente.
             </p>
-            <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.72rem', color: 'rgba(0,0,0,0.4)', marginTop: 'auto' }}>
               Mars 2026
             </p>
           </div>
