@@ -50,7 +50,7 @@ const projects = [
 
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
-  const w = size === 'large' ? '80%' : isVideo ? '230px' : '44px'
+  const w = size === 'large' ? '80%' : isVideo ? '100%' : '44px'
   const h = size === 'large' ? '400px' : isVideo ? '250px' : '48px'
   const filter = isActive && !isVideo ? 'brightness(0) invert(1)' : 'none'
 
