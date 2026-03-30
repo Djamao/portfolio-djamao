@@ -170,7 +170,7 @@ export default function ProjetsIndex() {
     >
       {/* Bonsai — même hauteur de référence que la homepage */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 'calc(var(--vp-height, 100vh) - 68px)', pointerEvents: 'none', zIndex: 1 }}>
-        <Bonsai monochrome />
+        <Bonsai />
       </div>
 
       {/* Left spacer — espace pour le bonsai */}
