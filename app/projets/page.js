@@ -50,8 +50,8 @@ const projects = [
 
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
-  const w = size === 'large' ? '80%' : isVideo ? '100%' : project.id === 'djamao' ? '58px' : '44px'
-  const h = size === 'large' ? '400px' : isVideo ? '250px' : project.id === 'djamao' ? '64px' : '48px'
+  const w = size === 'large' ? (isVideo ? '100%' : '80%') : isVideo ? '100%' : project.id === 'djamao' ? '58px' : '44px'
+  const h = size === 'large' ? (isVideo ? '750px' : '400px') : isVideo ? '250px' : project.id === 'djamao' ? '64px' : '48px'
   const filter = isVideo ? 'none'
     : project.id === 'djamao' ? (!isActive ? 'grayscale(1)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
