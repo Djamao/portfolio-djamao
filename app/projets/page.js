@@ -62,6 +62,7 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    paddingLeft: isVideo && size !== 'large' ? '20px' : 0,
   }
 
   if (project.logoType === 'video') {
