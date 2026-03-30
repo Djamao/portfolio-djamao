@@ -29,8 +29,8 @@ const projects = [
     id: 'bbc',
     name: 'BAKERY BLISS CAFÉ',
     accent: '#C94B1F',
-    logo: '/bbc-logo.svg',
-    logoType: 'svg',
+    logo: '/bbc-logo.png',
+    logoType: 'img',
     category: 'IDENTITÉ VISUELLE /DA/DESIGNER',
     year: '2024',
     href: '/projets/bbc',
@@ -124,14 +124,17 @@ export default function ProjetsIndex() {
   return (
     <main
       style={{
-        height: 'calc(100vh - 49px)',
+        height: 'calc(var(--vp-height, 100vh) - 49px)',
         backgroundColor: '#ffffff',
         display: 'flex',
         overflow: 'hidden',
         position: 'relative',
       }}
     >
-      <Bonsai />
+      {/* Bonsai — même hauteur de référence que la homepage */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 'calc(var(--vp-height, 100vh) - 68px)', pointerEvents: 'none', zIndex: 1 }}>
+        <Bonsai />
+      </div>
 
       {/* Left spacer — espace pour le bonsai */}
       <div style={{ flexBasis: '35%', flexShrink: 0, flexGrow: 0 }} />
