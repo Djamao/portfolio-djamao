@@ -49,10 +49,10 @@ const projects = [
 ]
 
 function ProjectLogo({ project, isActive, size }) {
-  const w = size === 'large' ? '80%' : '144px'
-  const h = size === 'large' ? '400px' : '160px'
-  const filter = isActive && project.logoType !== 'video' ? 'brightness(0) invert(1)' : 'none'
   const isVideo = project.logoType === 'video'
+  const w = size === 'large' ? '80%' : isVideo ? '200px' : '44px'
+  const h = size === 'large' ? '400px' : isVideo ? '220px' : '48px'
+  const filter = isActive && !isVideo ? 'brightness(0) invert(1)' : 'none'
 
   const containerStyle = {
     width: w,
@@ -110,14 +110,18 @@ function ProjectLogo({ project, isActive, size }) {
 export default function ProjetsIndex() {
   const [activeIndex, setActiveIndex] = useState(null)
   const indexRef = useRef(null)
+  const locked = useRef(false)
   const router = useRouter()
 
   const go = useCallback((delta) => {
+    if (locked.current) return
     const current = indexRef.current ?? -1
     const next = Math.max(0, Math.min(projects.length - 1, current + delta))
     if (next === indexRef.current) return
+    locked.current = true
     setActiveIndex(next)
     indexRef.current = next
+    setTimeout(() => { locked.current = false }, 350)
   }, [])
 
   useEffect(() => {
