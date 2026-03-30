@@ -228,7 +228,7 @@ export default function ProjetsIndex() {
                   textTransform: 'uppercase',
                   lineHeight: 1.4,
                   marginBottom: '0.15rem',
-                  opacity: isActive ? 1 : 0.65,
+                  opacity: 1,
                 }}
               >
                 {project.category}
@@ -238,7 +238,7 @@ export default function ProjetsIndex() {
                   fontFamily: 'var(--font-satoshi)',
                   fontSize: isActive ? '0.85rem' : '0.75rem',
                   marginBottom: '0.15rem',
-                  opacity: isActive ? 1 : 0.65,
+                  opacity: 1,
                 }}
               >
                 {project.year}
