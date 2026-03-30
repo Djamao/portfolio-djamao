@@ -62,7 +62,6 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    transform: isVideo ? 'translate(-10px, -80px)' : 'none',
   }
 
   if (project.logoType === 'video') {
@@ -73,7 +72,7 @@ function ProjectLogo({ project, isActive, size }) {
           loop
           muted
           playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+          style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translateY(-80px)' }}
         >
           <source src={project.logo} type="video/webm" />
         </video>
