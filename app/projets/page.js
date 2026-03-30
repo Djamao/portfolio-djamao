@@ -110,18 +110,14 @@ function ProjectLogo({ project, isActive, size }) {
 export default function ProjetsIndex() {
   const [activeIndex, setActiveIndex] = useState(null)
   const indexRef = useRef(null)
-  const locked = useRef(false)
   const router = useRouter()
 
   const go = useCallback((delta) => {
-    if (locked.current) return
     const current = indexRef.current ?? -1
     const next = Math.max(0, Math.min(projects.length - 1, current + delta))
     if (next === indexRef.current) return
-    locked.current = true
     setActiveIndex(next)
     indexRef.current = next
-    setTimeout(() => { locked.current = false }, 600)
   }, [])
 
   useEffect(() => {
