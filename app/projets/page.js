@@ -21,6 +21,7 @@ const projects = [
     accent: '#0a0a0a',
     logo: '/sam-disc.webm',
     logoType: 'video',
+    overlay: '/sam-cd-case.webp',
     category: 'PORTFOLIO WEBSITE',
     year: '2026',
     href: '/projets/sam',
@@ -48,9 +49,8 @@ const projects = [
 ]
 
 function ProjectLogo({ project, isActive, size }) {
-  const w = size === 'large' ? '75%' : '44px'
-  const h = size === 'large' ? '160px' : '50px'
-  // SVGs and bonsai become white when column is active
+  const w = size === 'large' ? '80%' : '72px'
+  const h = size === 'large' ? '200px' : '80px'
   const filter = isActive && project.logoType !== 'video' ? 'brightness(0) invert(1)' : 'none'
 
   const containerStyle = {
@@ -60,6 +60,7 @@ function ProjectLogo({ project, isActive, size }) {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
   }
 
   if (project.logoType === 'video') {
@@ -74,6 +75,14 @@ function ProjectLogo({ project, isActive, size }) {
         >
           <source src={project.logo} type="video/webm" />
         </video>
+        {project.overlay && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.overlay}
+            alt=""
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
+          />
+        )}
       </div>
     )
   }
