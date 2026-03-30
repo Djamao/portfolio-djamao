@@ -10,6 +10,7 @@ const projects = [
     name: 'DJAMAO PIERRE',
     accent: '#2D5016',
     logo: '/bonsai-vert.png',
+    logoType: 'img',
     category: 'PORTFOLIO PERSONNEL',
     year: '2026',
     href: '/projets/djamao',
@@ -18,7 +19,8 @@ const projects = [
     id: 'sam',
     name: 'SAM QUILES',
     accent: '#0a0a0a',
-    logo: '/sam-thumb.webp',
+    logo: '/sam-disc.webm',
+    logoType: 'video',
     category: 'PORTFOLIO WEBSITE',
     year: '2026',
     href: '/projets/sam',
@@ -27,7 +29,8 @@ const projects = [
     id: 'bbc',
     name: 'BAKERY BLISS CAFÉ',
     accent: '#C94B1F',
-    logo: '/bbc-thumb.webp',
+    logo: '/bbc-logo.svg',
+    logoType: 'svg',
     category: 'IDENTITÉ VISUELLE /DA/DESIGNER',
     year: '2024',
     href: '/projets/bbc',
@@ -36,12 +39,62 @@ const projects = [
     id: 'staeky',
     name: 'STAEKY',
     accent: '#4A6FE3',
-    logo: '/staeky-thumb.webp',
+    logo: '/staeky-logo.svg',
+    logoType: 'svg',
     category: 'LOGO DESIGNER',
     year: '2026',
     href: '/projets/staeky',
   },
 ]
+
+function ProjectLogo({ project, isActive, size }) {
+  const w = size === 'large' ? '75%' : '44px'
+  const h = size === 'large' ? '160px' : '50px'
+  // SVGs and bonsai become white when column is active
+  const filter = isActive && project.logoType !== 'video' ? 'brightness(0) invert(1)' : 'none'
+
+  const containerStyle = {
+    width: w,
+    height: h,
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+
+  if (project.logoType === 'video') {
+    return (
+      <div style={containerStyle}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        >
+          <source src={project.logo} type="video/webm" />
+        </video>
+      </div>
+    )
+  }
+
+  return (
+    <div style={containerStyle}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={project.logo}
+        alt={project.name}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+          filter,
+          transition: 'filter 0.3s ease',
+        }}
+      />
+    </div>
+  )
+}
 
 export default function ProjetsIndex() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -80,6 +133,10 @@ export default function ProjetsIndex() {
     >
       <Bonsai />
 
+      {/* Left spacer — espace pour le bonsai */}
+      <div style={{ flexBasis: '35%', flexShrink: 0, flexGrow: 0 }} />
+
+      {/* Colonnes projets */}
       {projects.map((project, i) => {
         const isActive = i === activeIndex
 
@@ -92,12 +149,8 @@ export default function ProjetsIndex() {
               flexShrink: 0,
               flexBasis: 0,
               transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
-              backgroundColor: isActive
-                ? project.accent
-                : project.id === 'djamao'
-                ? 'rgba(255,255,255,0.45)'
-                : '#ffffff',
-              borderRight: i < projects.length - 1 ? '1px solid #0a0a0a' : 'none',
+              backgroundColor: isActive ? project.accent : '#ffffff',
+              borderLeft: '1px solid #0a0a0a',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -122,7 +175,6 @@ export default function ProjetsIndex() {
 
             {isActive ? (
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', overflow: 'hidden' }}>
-                {/* Project name */}
                 <h2
                   style={{
                     fontFamily: 'var(--font-clash)',
@@ -142,38 +194,14 @@ export default function ProjetsIndex() {
                   ))}
                 </h2>
 
-                {/* Logo */}
-                <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '0.75rem' }}>
-                  <div style={{ position: 'relative', width: '75%', height: '160px' }}>
-                    <Image
-                      src={project.logo}
-                      alt={project.name}
-                      fill
-                      sizes="200px"
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </div>
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                  <ProjectLogo project={project} isActive size="large" />
                 </div>
               </div>
             ) : (
               <>
-                {/* Small logo */}
-                <div
-                  style={{
-                    position: 'relative',
-                    width: 44,
-                    height: 50,
-                    marginTop: '0.75rem',
-                    flexShrink: 0,
-                  }}
-                >
-                  <Image
-                    src={project.logo}
-                    alt={project.name}
-                    fill
-                    sizes="44px"
-                    style={{ objectFit: 'contain' }}
-                  />
+                <div style={{ marginTop: '0.75rem' }}>
+                  <ProjectLogo project={project} isActive={false} size="small" />
                 </div>
                 <div style={{ flex: 1 }} />
               </>
