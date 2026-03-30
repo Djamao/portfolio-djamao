@@ -223,7 +223,7 @@ export default function ProjetsIndex() {
               <p
                 style={{
                   fontFamily: 'var(--font-cabinet)',
-                  fontSize: isActive ? '0.6rem' : '0.5rem',
+                  fontSize: isActive ? '0.75rem' : '0.65rem',
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                   lineHeight: 1.4,
@@ -236,7 +236,7 @@ export default function ProjetsIndex() {
               <p
                 style={{
                   fontFamily: 'var(--font-satoshi)',
-                  fontSize: isActive ? '0.7rem' : '0.6rem',
+                  fontSize: isActive ? '0.85rem' : '0.75rem',
                   marginBottom: '0.15rem',
                   opacity: isActive ? 1 : 0.65,
                 }}
