@@ -64,6 +64,7 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    transform: !isVideo && project.id === 'djamao' && size !== 'large' ? 'translateY(-15px)' : undefined,
   }
 
   if (project.logoType === 'video') {
