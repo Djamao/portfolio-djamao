@@ -2,14 +2,45 @@
 import Image from 'next/image'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import VerticalWords from '../components/VerticalWords'
 import Bonsai from '../components/Bonsai'
 
 const projects = [
-  { id: 'staeky', name: 'STAEKY',           accent: '#4A6FE3', image: '/staeky-thumb.webp',       href: '/projets/staeky' },
-  { id: 'bbc',    name: 'BAKERY BLISS CAFÉ', accent: '#C94B1F', image: '/bbc-thumb.webp',            href: '/projets/bbc'    },
-  { id: 'sam',    name: 'SAM QUILES',        accent: '#0a0a0a', image: '/sam-thumb.webp',             href: '/projets/sam'    },
-  { id: 'djamao', name: 'DJAMAO PIERRE',     accent: '#2D5016', image: '/djamao-thumb.webm', isVideo: true, href: '/projets/djamao' },
+  {
+    id: 'djamao',
+    name: 'DJAMAO PIERRE',
+    accent: '#2D5016',
+    logo: '/bonsai-vert.png',
+    category: 'PORTFOLIO PERSONNEL',
+    year: '2026',
+    href: '/projets/djamao',
+  },
+  {
+    id: 'sam',
+    name: 'SAM QUILES',
+    accent: '#0a0a0a',
+    logo: '/sam-thumb.webp',
+    category: 'PORTFOLIO WEBSITE',
+    year: '2026',
+    href: '/projets/sam',
+  },
+  {
+    id: 'bbc',
+    name: 'BAKERY BLISS CAFÉ',
+    accent: '#C94B1F',
+    logo: '/bbc-thumb.webp',
+    category: 'IDENTITÉ VISUELLE /DA/DESIGNER',
+    year: '2024',
+    href: '/projets/bbc',
+  },
+  {
+    id: 'staeky',
+    name: 'STAEKY',
+    accent: '#4A6FE3',
+    logo: '/staeky-thumb.webp',
+    category: 'LOGO DESIGNER',
+    year: '2026',
+    href: '/projets/staeky',
+  },
 ]
 
 export default function ProjetsIndex() {
@@ -37,10 +68,6 @@ export default function ProjetsIndex() {
     return () => window.removeEventListener('wheel', onWheel)
   }, [go])
 
-  const active = projects[activeIndex]
-  const maxWordLen = Math.max(...active.name.split(' ').map(w => w.length))
-  const fontSize = Math.min(82, Math.max(40, Math.floor(660 / maxWordLen)))
-
   return (
     <main
       style={{
@@ -51,199 +78,146 @@ export default function ProjetsIndex() {
         position: 'relative',
       }}
     >
-      {/* Colonne gauche — titre vertical */}
-      <div
-        style={{
-          flexShrink: 0,
-          display: 'flex',
-          alignItems: 'flex-start',
-          alignSelf: 'stretch',
-          padding: '30px 1.5rem',
-        }}
-      >
-        <VerticalWords
-          key={active.id}
-          name={active.name}
-          color="#0a0a0a"
-          size={fontSize}
-        />
-      </div>
+      <Bonsai />
 
-      {/* Centre — pile de cartes */}
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-        }}
-      >
-        <div style={{ position: 'relative', width: '300px', height: '400px' }}>
-          {projects.map((project, i) => {
-            const dist = i - activeIndex
-            const absDist = Math.abs(dist)
-            const isActive = dist === 0
+      {projects.map((project, i) => {
+        const isActive = i === activeIndex
 
-            const scale = [1, 0.87, 0.75, 0.63][Math.min(absDist, 3)]
-            const translateY = dist < 0
-              ? [-55, -90, -115][Math.min(absDist - 1, 2)]
-              : dist > 0
-              ? [55, 90, 115][Math.min(absDist - 1, 2)]
-              : 0
-            const opacity = [1, 0.65, 0.45, 0.3][Math.min(absDist, 3)]
-            const zIndex = 4 - absDist
+        return (
+          <div
+            key={project.id}
+            onClick={() => isActive ? router.push(project.href) : go(i - activeIndex)}
+            style={{
+              flexGrow: isActive ? 2 : 1,
+              flexShrink: 0,
+              flexBasis: 0,
+              transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
+              backgroundColor: isActive
+                ? project.accent
+                : project.id === 'djamao'
+                ? 'rgba(255,255,255,0.45)'
+                : '#ffffff',
+              borderRight: i < projects.length - 1 ? '1px solid #0a0a0a' : 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '1.25rem 0.75rem',
+              cursor: 'pointer',
+              overflow: 'hidden',
+              position: 'relative',
+              zIndex: 2,
+            }}
+          >
+            {/* Dot */}
+            <div
+              style={{
+                width: isActive ? 10 : 7,
+                height: isActive ? 10 : 7,
+                borderRadius: '50%',
+                backgroundColor: isActive ? '#ffffff' : project.accent,
+                flexShrink: 0,
+                transition: 'all 0.3s ease',
+              }}
+            />
 
-            return (
-              <div
-                key={project.id}
-                onClick={() => isActive ? router.push(project.href) : setActiveIndex(i)}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '300px',
-                  height: '400px',
-                  zIndex,
-                  transform: `translateY(${translateY}px) scale(${scale})`,
-                  opacity,
-                  transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
-                  cursor: 'pointer',
-                  transformOrigin: 'center center',
-                  overflow: 'hidden',
-                }}
-              >
-                {project.isVideo ? (
-                  <video
-                    autoPlay loop muted playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
-                  >
-                    <source src="/djamao-thumb.webm" type="video/webm" />
-                    <source src="/djamao-thumb.mp4" type="video/mp4" />
-                  </video>
-                ) : (
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    sizes="300px"
-                    style={{ objectFit: 'cover' }}
-                    priority={isActive}
-                  />
-                )}
+            {isActive ? (
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', overflow: 'hidden' }}>
+                {/* Project name */}
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-clash)',
+                    fontWeight: 700,
+                    fontSize: 'clamp(1.6rem, 2.6vw, 2.8rem)',
+                    color: '#ffffff',
+                    textAlign: 'center',
+                    lineHeight: 1.0,
+                    letterSpacing: '-0.01em',
+                    textTransform: 'uppercase',
+                    marginTop: '1.5rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  {project.name.split(' ').map((word, j) => (
+                    <span key={j} style={{ display: 'block' }}>{word}</span>
+                  ))}
+                </h2>
+
+                {/* Logo */}
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '0.75rem' }}>
+                  <div style={{ position: 'relative', width: '75%', height: '160px' }}>
+                    <Image
+                      src={project.logo}
+                      alt={project.name}
+                      fill
+                      sizes="200px"
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+                </div>
               </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Navigation droite — thumbnails + dots */}
-      <div
-        style={{
-          flexShrink: 0,
-          display: 'flex',
-          alignItems: 'stretch',
-          paddingRight: '1.5rem',
-        }}
-      >
-        {/* Thumbnails */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
-            height: '100%',
-            gap: '12px',
-          }}
-        >
-          {projects.map((project, i) => {
-            const isActive = activeIndex === i
-            return (
-              <div
-                key={project.id}
-                onClick={(e) => { e.stopPropagation(); go(i - activeIndex) }}
-                style={{
-                  width: '60px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                }}
-              >
+            ) : (
+              <>
+                {/* Small logo */}
                 <div
                   style={{
                     position: 'relative',
-                    overflow: 'hidden',
+                    width: 44,
+                    height: 50,
+                    marginTop: '0.75rem',
                     flexShrink: 0,
-                    width: isActive ? 60 : 48,
-                    height: isActive ? 80 : 64,
-                    opacity: isActive ? 1 : 0.4,
-                    transition: 'all 0.3s ease',
                   }}
                 >
-                  {project.isVideo ? (
-                    <video
-                      autoPlay loop muted playsInline
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
-                    >
-                      <source src="/mac-spinning.webm" type="video/webm" />
-                      <source src="/mac-spinning.mp4" type="video/mp4" />
-                    </video>
-                  ) : (
-                    <Image
-                      src={project.image}
-                      alt={project.name}
-                      fill
-                      sizes="60px"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  )}
+                  <Image
+                    src={project.logo}
+                    alt={project.name}
+                    fill
+                    sizes="44px"
+                    style={{ objectFit: 'contain' }}
+                  />
                 </div>
-              </div>
-            )
-          })}
-        </div>
+                <div style={{ flex: 1 }} />
+              </>
+            )}
 
-        {/* Dots */}
-        <div
-          style={{
-            width: '20px',
-            position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: '10%',
-              bottom: '10%',
-              width: '1px',
-              backgroundColor: '#0a0a0a',
-            }}
-          />
-          {projects.map((project, i) => (
-            <div key={project.id} style={{ position: 'relative', zIndex: 1 }}>
-              <div
+            {/* Bottom info */}
+            <div
+              style={{
+                textAlign: 'center',
+                color: isActive ? '#ffffff' : '#0a0a0a',
+                flexShrink: 0,
+                width: '100%',
+              }}
+            >
+              <p
                 style={{
-                  borderRadius: '50%',
-                  border: '1px solid #0a0a0a',
-                  width: activeIndex === i ? 9 : 6,
-                  height: activeIndex === i ? 9 : 6,
-                  backgroundColor: activeIndex === i ? '#0a0a0a' : '#ffffff',
-                  transition: 'all 0.25s ease',
+                  fontFamily: 'var(--font-cabinet)',
+                  fontSize: isActive ? '0.6rem' : '0.5rem',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.4,
+                  marginBottom: '0.15rem',
+                  opacity: isActive ? 1 : 0.65,
                 }}
-              />
+              >
+                {project.category}
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-satoshi)',
+                  fontSize: isActive ? '0.7rem' : '0.6rem',
+                  marginBottom: '0.15rem',
+                  opacity: isActive ? 1 : 0.65,
+                }}
+              >
+                {project.year}
+              </p>
+              <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem' }}>
+                {isActive ? '→' : '↓'}
+              </p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <Bonsai />
+          </div>
+        )
+      })}
     </main>
   )
 }
