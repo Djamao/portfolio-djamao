@@ -234,6 +234,7 @@ export default function ProjetsIndex() {
                 style={{
                   fontFamily: 'var(--font-cabinet)',
                   fontSize: '0.875rem',
+                  fontWeight: 600,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                   lineHeight: 1.4,
