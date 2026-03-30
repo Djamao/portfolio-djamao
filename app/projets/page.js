@@ -49,9 +49,10 @@ const projects = [
 ]
 
 function ProjectLogo({ project, isActive, size }) {
-  const w = size === 'large' ? '80%' : '72px'
-  const h = size === 'large' ? '200px' : '80px'
+  const w = size === 'large' ? '80%' : '144px'
+  const h = size === 'large' ? '400px' : '160px'
   const filter = isActive && project.logoType !== 'video' ? 'brightness(0) invert(1)' : 'none'
+  const isVideo = project.logoType === 'video'
 
   const containerStyle = {
     width: w,
@@ -61,6 +62,7 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    transform: isVideo ? 'translateY(-12px)' : 'none',
   }
 
   if (project.logoType === 'video') {
