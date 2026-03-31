@@ -189,6 +189,7 @@ export default function ProjetsIndex() {
               flexGrow: isActive ? 12 : 1,
               flexShrink: 0,
               flexBasis: 0,
+              maxWidth: isActive ? 'none' : '100px',
               transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
               backgroundColor: isActive ? project.accent : '#ffffff',
               borderLeft: '1px solid #0a0a0a',
