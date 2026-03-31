@@ -69,7 +69,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? 'translate(20px, -200px) scale(1.3)' : 'translate(35px, -130px) scale(1.5)'
+    const blockShift = size !== 'large' ? 'translate(15px, -205px) scale(1.3)' : 'translate(35px, -130px) scale(1.5)'
     return (
       <div style={containerStyle}>
         {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
