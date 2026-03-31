@@ -69,7 +69,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? 'translate(0px, -185px) scale(1.5)' : 'translate(35px, -130px) scale(1.5)'
+    const blockShift = size !== 'large' ? 'translate(0px, -185px) scale(1.3)' : 'translate(35px, -130px) scale(1.5)'
     return (
       <div style={containerStyle}>
         {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
@@ -79,7 +79,7 @@ function ProjectLogo({ project, isActive, size }) {
             loop
             muted
             playsInline
-            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(2.5px, -1px)' }}
+            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
           >
             <source src={project.logo} type="video/webm" />
           </video>
