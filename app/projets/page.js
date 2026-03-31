@@ -187,7 +187,7 @@ export default function ProjetsIndex() {
             key={project.id}
             onClick={() => isActive ? router.push(project.href) : go(i - (activeIndex ?? -1))}
             style={{
-              flexGrow: isActive ? 18 : 1,
+              flexGrow: isActive ? 18 : activeIndex === null ? 1 : 0,
               flexShrink: 0,
               flexBasis: isActive ? 0 : '100px',
               transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
