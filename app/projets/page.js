@@ -53,9 +53,10 @@ function ProjectLogo({ project, isActive, size }) {
   const w = size === 'large' ? (isVideo ? '100%' : '80%') : isVideo ? '100%' : project.id === 'djamao' ? '80px' : '44px'
   const h = size === 'large' ? (isVideo ? '750px' : '400px') : isVideo ? '250px' : project.id === 'djamao' ? '88px' : '48px'
   const filter = isVideo ? 'none'
-    : project.id === 'djamao' ? (!isActive ? 'grayscale(1)' : 'none')
+    : project.id === 'djamao' ? (!isActive ? 'grayscale(1) brightness(0.15)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
 
+  const inactiveShift = !isActive && size !== 'large' && (project.id === 'bbc' || project.id === 'staeky') ? 'translateY(8px)' : undefined
   const containerStyle = {
     width: w,
     height: h,
@@ -64,7 +65,7 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    transform: !isVideo && project.id === 'djamao' ? (size !== 'large' ? 'translateY(-15px)' : 'translateY(-20px)') : undefined,
+    transform: inactiveShift ?? (!isVideo && project.id === 'djamao' ? (size !== 'large' ? 'translateY(-15px)' : 'translateY(-20px)') : undefined),
   }
 
   if (project.logoType === 'video') {
