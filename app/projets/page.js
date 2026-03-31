@@ -69,7 +69,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? 'translate(15px, -205px) scale(1.3)' : 'translate(35px, -130px) scale(1.5)'
+    const blockShift = size !== 'large' ? 'translate(15px, -205px) scale(1.5)' : 'translate(35px, -130px) scale(1.5)'
     return (
       <div style={containerStyle}>
         {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
@@ -196,7 +196,7 @@ export default function ProjetsIndex() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              padding: '1.25rem 0.75rem',
+              padding: isActive ? '1.25rem 0.75rem' : '1.25rem 0.4rem',
               cursor: 'pointer',
               overflow: 'hidden',
               position: 'relative',
