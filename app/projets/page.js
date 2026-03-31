@@ -69,7 +69,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? 'translate(15px, -205px) scale(1.5)' : 'translate(35px, -130px) scale(1.5)'
+    const blockShift = size !== 'large' ? 'translate(15px, -195px) scale(1.5)' : 'translate(35px, -130px) scale(1.5)'
     return (
       <div style={containerStyle}>
         {/* Bloc CD+cover solidaire — on déplace ce div pour garder l'alignement */}
@@ -187,7 +187,7 @@ export default function ProjetsIndex() {
             key={project.id}
             onClick={() => isActive ? router.push(project.href) : go(i - (activeIndex ?? -1))}
             style={{
-              flexGrow: isActive ? 12 : 1,
+              flexGrow: isActive ? 18 : 1,
               flexShrink: 0,
               flexBasis: isActive ? 0 : '100px',
               transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
