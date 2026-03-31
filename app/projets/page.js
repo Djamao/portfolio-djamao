@@ -175,7 +175,7 @@ export default function ProjetsIndex() {
       </div>
 
       {/* Left spacer — espace pour le bonsai */}
-      <div style={{ flexBasis: '63%', flexShrink: 0, flexGrow: 0 }} />
+      <div style={{ flexBasis: '60%', flexShrink: 0, flexGrow: 0 }} />
 
       {/* Colonnes projets */}
       {projects.map((project, i) => {
