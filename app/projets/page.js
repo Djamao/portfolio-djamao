@@ -176,7 +176,12 @@ export default function ProjetsIndex() {
       </div>
 
       {/* Left spacer — espace pour le bonsai */}
-      <div style={{ flexBasis: '60%', flexShrink: 0, flexGrow: 0 }} />
+      <div style={{
+        flexBasis: activeIndex === null ? '60%' : '40%',
+        flexShrink: 0,
+        flexGrow: 0,
+        transition: 'flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+      }} />
 
       {/* Colonnes projets */}
       {projects.map((project, i) => {
@@ -187,10 +192,10 @@ export default function ProjetsIndex() {
             key={project.id}
             onClick={() => isActive ? router.push(project.href) : go(i - (activeIndex ?? -1))}
             style={{
-              flexGrow: isActive ? 18 : activeIndex === null ? 1 : 0,
+              flexGrow: isActive ? 1 : 0,
               flexShrink: 0,
-              flexBasis: isActive ? 0 : '100px',
-              transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
+              flexBasis: isActive ? 0 : '10%',
+              transition: 'flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
               backgroundColor: isActive ? project.accent : '#ffffff',
               borderLeft: '1px solid #0a0a0a',
               display: 'flex',
