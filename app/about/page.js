@@ -38,6 +38,7 @@ export default function About() {
     <main
       style={{
         height: 'calc(100vh - var(--navbar-height))',
+        width: '100%',
         backgroundColor: '#ffffff',
         display: 'flex',
         flexDirection: 'column',
@@ -50,8 +51,9 @@ export default function About() {
         style={{
           flex: 1,
           display: 'grid',
-          gridTemplateColumns: '68% 32%',
+          gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
           minHeight: 0,
+          width: '100%',
         }}
       >
         {/* Left — animation + ABOUT ME flottant */}
@@ -62,7 +64,7 @@ export default function About() {
           style={{
             position: 'relative',
             overflow: 'hidden',
-            marginLeft: '-7rem',
+            marginLeft: 'clamp(-3rem, -5vw, -7rem)',
             minWidth: 0,
           }}
         >

@@ -24,16 +24,17 @@ export default function Sam() {
     <main
       style={{
         height: 'calc(100vh - 49px)',
+        width: '100%',
         backgroundColor: '#ffffff',
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr auto',
+        gridTemplateColumns: 'minmax(0, auto) minmax(0, 1fr) minmax(0, auto)',
         overflow: 'hidden',
       }}
     >
       {/* Left — retour + vertical title */}
-      <div style={{ borderRight: '1px solid #0a0a0a', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflow: 'hidden' }}>
+      <div style={{ borderRight: '1px solid #0a0a0a', padding: 'clamp(0.5rem, 1.5vw, 1rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(0.5rem, 1vw, 0.75rem)', overflow: 'hidden', minWidth: 'clamp(100px, 15vw, 200px)' }}>
         <motion.div whileHover={{ x: -4 }} transition={{ duration: 0.2, ease: 'easeOut' }} style={{ display: 'inline-block' }}>
-          <Link href="/projets" style={{ fontFamily: 'var(--font-cabinet)', fontSize: '0.875rem', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
+          <Link href="/projets" style={{ fontFamily: 'var(--font-cabinet)', fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)', color: '#0a0a0a', letterSpacing: 0, textDecoration: 'none' }}>
             ← retour
           </Link>
         </motion.div>

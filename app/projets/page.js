@@ -164,6 +164,7 @@ export default function ProjetsIndex() {
     <main
       style={{
         height: 'calc(100vh - var(--navbar-height))',
+        width: '100%',
         backgroundColor: '#ffffff',
         display: 'flex',
         overflow: 'hidden',
@@ -201,7 +202,7 @@ export default function ProjetsIndex() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              padding: isActive ? '1.25rem 0.75rem' : '1.25rem 0.4rem',
+              padding: isActive ? 'clamp(0.75rem, 1.5vw, 1.25rem) clamp(0.4rem, 1vw, 0.75rem)' : 'clamp(0.75rem, 1.5vw, 1.25rem) clamp(0.2rem, 0.5vw, 0.4rem)',
               cursor: 'pointer',
               overflow: 'hidden',
               position: 'relative',

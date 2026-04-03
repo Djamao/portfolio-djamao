@@ -8,6 +8,7 @@ export default function Home() {
     <main
       style={{
         height: 'calc(100vh - var(--navbar-height))',
+        width: '100%',
         backgroundColor: '#ffffff',
         position: 'relative',
         overflow: 'hidden',

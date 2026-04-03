@@ -6,12 +6,12 @@ import { motion } from 'framer-motion'
 const footerLabel = {
   fontFamily: 'var(--font-cabinet)',
   fontWeight: 600,
-  fontSize: '0.75rem',
+  fontSize: 'clamp(0.6rem, 1.2vw, 0.75rem)',
   letterSpacing: '0.08em',
   textTransform: 'uppercase',
   color: '#ffffff',
   display: 'block',
-  marginBottom: '80px',
+  marginBottom: 'clamp(3rem, 8vw, 80px)',
 }
 
 const field = {
@@ -134,6 +134,7 @@ export default function Contact() {
     <main
       style={{
         height: 'calc(100vh - var(--navbar-height))',
+        width: '100%',
         backgroundColor: '#000000',
         display: 'flex',
         flexDirection: 'column',
