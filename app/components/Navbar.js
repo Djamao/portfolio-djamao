@@ -26,6 +26,7 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
+        width: '100%',
       }}
     >
       <div

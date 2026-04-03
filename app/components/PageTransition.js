@@ -46,6 +46,7 @@ export default function PageTransition({ children }) {
         initial={v.initial}
         animate={v.animate}
         exit={v.exit}
+        style={{ width: '100%', height: '100%' }}
       >
         {children}
       </motion.div>
