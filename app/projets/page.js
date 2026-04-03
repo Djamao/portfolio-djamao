@@ -163,7 +163,7 @@ export default function ProjetsIndex() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 49px)',
+        height: 'calc(100vh - var(--navbar-height))',
         backgroundColor: '#ffffff',
         display: 'flex',
         overflow: 'hidden',
@@ -171,7 +171,7 @@ export default function ProjetsIndex() {
       }}
     >
       {/* Bonsai — même hauteur de référence que la homepage */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 'calc(var(--vp-height, 100vh) - 68px)', pointerEvents: 'none', zIndex: 1 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 'calc(100vh - var(--navbar-height))', pointerEvents: 'none', zIndex: 1 }}>
         <Bonsai />
       </div>
 

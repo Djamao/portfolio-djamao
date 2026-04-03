@@ -53,8 +53,8 @@ export default function DjamaoPierre() {
       </div>
 
       {/* Right — info panel */}
-      <div style={{ width: '480px', borderLeft: '1px solid #0a0a0a', padding: '1.5rem 2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '1.5rem', flex: 1, minHeight: 0 }}>
+      <div style={{ width: 'clamp(280px, 30vw, 480px)', borderLeft: '1px solid #0a0a0a', padding: 'clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 2rem)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'clamp(100px, 1fr, 200px) 1.2fr', gap: 'clamp(0.75rem, 1.5vw, 1.5rem)', flex: 1, minHeight: 0 }}>
 
           {/* Left sub-col: TÂCHES + LOGICIELS */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', overflow: 'hidden' }}>

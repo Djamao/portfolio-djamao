@@ -30,7 +30,7 @@ export default function Navbar() {
     >
       <div
         style={{
-          padding: '0.3rem 1.5rem',
+          padding: 'clamp(0.2rem, 1vw, 0.3rem) clamp(0.75rem, 2vw, 1.5rem)',
           borderRight: `1px solid ${border}`,
           display: 'flex',
           justifyContent: 'center',
@@ -41,7 +41,7 @@ export default function Navbar() {
 
       <div
         style={{
-          padding: '0.3rem 1.5rem',
+          padding: 'clamp(0.2rem, 1vw, 0.3rem) clamp(0.75rem, 2vw, 1.5rem)',
           borderRight: `1px solid ${border}`,
           display: 'flex',
           justifyContent: 'center',
@@ -52,7 +52,7 @@ export default function Navbar() {
 
       <div
         style={{
-          padding: '0.3rem 1.5rem',
+          padding: 'clamp(0.2rem, 1vw, 0.3rem) clamp(0.75rem, 2vw, 1.5rem)',
           display: 'flex',
           justifyContent: 'center',
         }}
@@ -69,7 +69,7 @@ function NavLink({ href, active, color, children }) {
       href={href}
       style={{
         fontFamily: 'var(--font-clash)',
-        fontSize: '22px',
+        fontSize: 'clamp(14px, 2.5vw, 22px)',
         fontWeight: 500,
         color,
         textDecoration: 'none',

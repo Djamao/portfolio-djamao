@@ -133,7 +133,7 @@ export default function Contact() {
     `}</style>
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - var(--navbar-height))',
         backgroundColor: '#000000',
         display: 'flex',
         flexDirection: 'column',
@@ -142,7 +142,7 @@ export default function Contact() {
       }}
     >
       {/* Titre */}
-      <div style={{ textAlign: 'center', padding: '2rem 30px 0' }}>
+      <div style={{ textAlign: 'center', padding: 'clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 30px) 0' }}>
         <motion.h1
           initial="hidden"
           animate="visible"
@@ -153,7 +153,7 @@ export default function Contact() {
           style={{
             fontFamily: 'var(--font-clash)',
             fontWeight: 700,
-            fontSize: 'clamp(5rem, 12vw, 11rem)',
+            fontSize: 'clamp(3.5rem, 11vw, 11rem)',
             lineHeight: 0.88,
             color: '#ffffff',
             letterSpacing: '-0.02em',
@@ -200,9 +200,10 @@ export default function Contact() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '3.5rem',
+            gap: 'clamp(1.5rem, 4vw, 3.5rem)',
             width: '100%',
-            maxWidth: '520px',
+            maxWidth: 'clamp(280px, 90vw, 520px)',
+            padding: '0 clamp(1rem, 2vw, 2rem)',
           }}
         >
           {[
@@ -268,7 +269,9 @@ export default function Contact() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-end',
-          padding: '1.5rem 30px',
+          padding: 'clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 3vw, 30px)',
+          gap: 'clamp(0.5rem, 2vw, 1rem)',
+          flexWrap: 'wrap',
         }}
       >
         {/* CV */}

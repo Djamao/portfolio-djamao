@@ -7,14 +7,14 @@ export default function Home() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - var(--navbar-height))',
         backgroundColor: '#ffffff',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {/* about me ——→ top right */}
-      <div style={{ position: 'absolute', top: '2rem', right: '3rem', zIndex: 3 }}>
+      <div style={{ position: 'absolute', top: 'clamp(1rem, 5vw, 2rem)', right: 'clamp(1rem, 5vw, 3rem)', zIndex: 3 }}>
         <Link
           href="/about"
           style={{
@@ -22,7 +22,7 @@ export default function Home() {
             alignItems: 'center',
             fontFamily: 'var(--font-cabinet)',
             fontWeight: 500,
-            fontSize: '1.15rem',
+            fontSize: 'clamp(0.85rem, 2vw, 1.15rem)',
             color: '#0a0a0a',
             textDecoration: 'none',
           }}
@@ -77,13 +77,16 @@ export default function Home() {
           style={{
             fontFamily: 'var(--font-clash)',
             fontWeight: 600,
-            fontSize: 'clamp(4rem, 13vw, 16rem)',
+            fontSize: 'clamp(3rem, 12vw, 16rem)',
             lineHeight: 0.88,
             color: '#0a0a0a',
             letterSpacing: '-0.02em',
-            whiteSpace: 'nowrap',
+            whiteSpace: 'wrap',
+            wordWrap: 'break-word',
             textAlign: 'center',
             textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+            maxWidth: '90vw',
+            overflowWrap: 'break-word',
           }}
         >
           {'DJAMAO PIERRE'.split('').map((char, i) => (

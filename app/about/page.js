@@ -37,7 +37,7 @@ export default function About() {
   return (
     <main
       style={{
-        height: 'calc(var(--vp-height, 100vh) - 68px)',
+        height: 'calc(100vh - var(--navbar-height))',
         backgroundColor: '#ffffff',
         display: 'flex',
         flexDirection: 'column',
@@ -93,8 +93,8 @@ export default function About() {
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            padding: '6.5rem 30px 2rem 2rem',
-            gap: '2rem',
+            padding: 'clamp(2rem, 5vw, 6.5rem) clamp(1rem, 3vw, 30px) clamp(1rem, 2vw, 2rem) clamp(1rem, 2vw, 2rem)',
+            gap: 'clamp(1rem, 2vw, 2rem)',
             alignContent: 'space-between',
             minWidth: 0,
             overflow: 'hidden',
@@ -162,12 +162,12 @@ export default function About() {
         href="/projets"
         style={{
           position: 'absolute',
-          bottom: '5px',
-          right: '30px',
+          bottom: 'clamp(2px, 1vw, 5px)',
+          right: 'clamp(1rem, 3vw, 30px)',
           zIndex: 3,
           fontFamily: 'var(--font-cabinet)',
           fontWeight: 500,
-          fontSize: '1.15rem',
+          fontSize: 'clamp(0.85rem, 2vw, 1.15rem)',
           color: '#0a0a0a',
           textDecoration: 'none',
           display: 'flex',

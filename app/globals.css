@@ -57,6 +57,7 @@
   --font-clash: "ClashGrotesk", sans-serif;
   --font-cabinet: "CabinetGrotesk", sans-serif;
   --font-satoshi: "Satoshi", sans-serif;
+  --navbar-height: 49px;
 }
 
 * {
@@ -69,6 +70,11 @@ html,
 body {
   overflow: hidden;
   height: 100%;
+  width: 100%;
+}
+
+html {
+  height: 100vh;
 }
 
 html {
@@ -96,4 +102,17 @@ button {
 a:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 3px;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 40px;
+  }
 }

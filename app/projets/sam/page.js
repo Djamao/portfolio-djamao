@@ -77,14 +77,14 @@ export default function Sam() {
         </div>
 
         {/* Horizontal thumbnail strip */}
-        <div style={{ height: '120px', flexShrink: 0, borderTop: '1px solid #0a0a0a', display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', overflowX: 'auto' }}>
+        <div style={{ height: 'clamp(80px, 20vh, 120px)', flexShrink: 0, borderTop: '1px solid #0a0a0a', display: 'flex', alignItems: 'center', gap: 'clamp(8px, 1vw, 12px)', padding: 'clamp(8px, 1vw, 12px)', overflowX: 'auto' }}>
           {images.map((img) => (
             <button
               key={img.src}
               onClick={() => setActiveImg(img)}
               style={{
-                width: '80px',
-                height: '96px',
+                width: 'clamp(60px, 10vw, 80px)',
+                height: 'clamp(72px, 12vw, 96px)',
                 position: 'relative',
                 flexShrink: 0,
                 cursor: 'pointer',
@@ -111,8 +111,8 @@ export default function Sam() {
       </div>
 
       {/* Right — info panel */}
-      <div style={{ width: '480px', borderLeft: '1px solid #0a0a0a', padding: '1.5rem 2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '1.5rem', flex: 1, minHeight: 0 }}>
+      <div style={{ width: 'clamp(280px, 30vw, 480px)', borderLeft: '1px solid #0a0a0a', padding: 'clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 2rem)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'clamp(100px, 1fr, 200px) 1.2fr', gap: 'clamp(0.75rem, 1.5vw, 1.5rem)', flex: 1, minHeight: 0 }}>
 
           {/* Left sub-col: TÂCHES + LOGICIELS */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', overflow: 'hidden' }}>
