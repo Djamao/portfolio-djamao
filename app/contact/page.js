@@ -203,7 +203,8 @@ export default function Contact() {
             flexDirection: 'column',
             gap: 'clamp(1.5rem, 4vw, 3.5rem)',
             width: '100%',
-            maxWidth: 'clamp(280px, 90vw, 520px)',
+            maxWidth: '100%',
+            width: '100%',
             padding: '0 clamp(1rem, 2vw, 2rem)',
           }}
         >

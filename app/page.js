@@ -86,8 +86,9 @@ export default function Home() {
             wordWrap: 'break-word',
             textAlign: 'center',
             textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            maxWidth: '90vw',
+            maxWidth: '100vw',
             overflowWrap: 'break-word',
+            width: '100%',
           }}
         >
           {'DJAMAO PIERRE'.split('').map((char, i) => (
