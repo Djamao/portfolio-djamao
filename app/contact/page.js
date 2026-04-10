@@ -11,7 +11,7 @@ const footerLabel = {
   textTransform: 'uppercase',
   color: '#ffffff',
   display: 'block',
-  marginBottom: 'clamp(3rem, 8vw, 80px)',
+  marginBottom: 'clamp(2.06rem, 8vw, 65px)',
 }
 
 const field = {
@@ -202,9 +202,7 @@ export default function Contact() {
             display: 'flex',
             flexDirection: 'column',
             gap: 'clamp(1.5rem, 4vw, 3.5rem)',
-            width: '100%',
-            maxWidth: '100%',
-            width: '100%',
+            width: '50%',
             padding: '0 clamp(1rem, 2vw, 2rem)',
           }}
         >
@@ -276,22 +274,6 @@ export default function Contact() {
           flexWrap: 'wrap',
         }}
       >
-        {/* CV */}
-        <div>
-          <p style={footerLabel}><TypeText full="CV" visible={vis[5]} /></p>
-          <a href="/cv.pdf" download style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#ffffff', textDecoration: 'none', display: 'inline-block' }}>
-            <TypeText full="Lien" visible={vis[6]} />
-          </a>
-        </div>
-
-        {/* Mail */}
-        <div>
-          <p style={footerLabel}><TypeText full="MAIL" visible={vis[7]} /></p>
-          <a href="mailto:djamaopro@gmail.com" style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#ffffff', textDecoration: 'none', display: 'inline-block' }}>
-            <TypeText full="djamaopro@gmail.com" visible={vis[8]} />
-          </a>
-        </div>
-
         {/* Réseaux sociaux */}
         <div>
           <p style={footerLabel}><TypeText full="RÉSEAUX SOCIAUX" visible={vis[9]} /></p>
@@ -311,6 +293,22 @@ export default function Contact() {
               <TypeText full={r.label} visible={vis[r.i]} />
             </a>
           ))}
+        </div>
+
+        {/* Mail */}
+        <div>
+          <p style={footerLabel}><TypeText full="MAIL" visible={vis[7]} /></p>
+          <a href="mailto:djamaopro@gmail.com" style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#ffffff', textDecoration: 'none', display: 'inline-block' }}>
+            <TypeText full="djamaopro@gmail.com" visible={vis[8]} />
+          </a>
+        </div>
+
+        {/* CV */}
+        <div>
+          <p style={footerLabel}><TypeText full="CV" visible={vis[5]} /></p>
+          <a href="/cv.pdf" download style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#ffffff', textDecoration: 'none', display: 'inline-block' }}>
+            <TypeText full="Lien" visible={vis[6]} />
+          </a>
         </div>
       </div>
 
