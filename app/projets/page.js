@@ -1,22 +1,12 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { AnimatePresence, motion } from 'framer-motion'
 import Bonsai from '../components/Bonsai'
 import { useMobile } from '../hooks/useMobile'
 
 const projects = [
-  {
-    id: 'djamao',
-    name: 'DJAMAO PIERRE',
-    accent: '#2D5016',
-    logo: '/bonsai.webp',
-    logoType: 'img',
-    category: 'PORTFOLIO PERSONNEL',
-    year: '2026',
-    href: '/projets/djamao',
-  },
   {
     id: 'sam',
     name: 'SAM QUILES',
@@ -29,16 +19,6 @@ const projects = [
     href: '/projets/sam',
   },
   {
-    id: 'bbc',
-    name: 'BAKERY BLISS CAFÉ',
-    accent: '#C94B1F',
-    logo: '/bbc-logo-hq.png',
-    logoType: 'img',
-    category: 'IDENTITÉ VISUELLE /DA/DESIGNER',
-    year: '2024',
-    href: '/projets/bbc',
-  },
-  {
     id: 'staeky',
     name: 'STAEKY',
     accent: '#4A6FE3',
@@ -48,12 +28,38 @@ const projects = [
     year: '2026',
     href: '/projets/staeky',
   },
+  {
+    id: 'djamao',
+    name: 'DJAMAO PIERRE',
+    accent: '#2D5016',
+    logo: '/bonsai.webp',
+    logoType: 'img',
+    category: 'PORTFOLIO PERSONNEL',
+    year: '2026',
+    href: '/projets/djamao',
+  },
+  {
+    id: 'bbc',
+    name: 'BAKERY BLISS CAFÉ',
+    accent: '#C94B1F',
+    logo: '/bbc-logo-hq.png',
+    logoType: 'img',
+    category: 'IDENTITÉ VISUELLE /DA/DESIGNER',
+    year: '2024',
+    href: '/projets/bbc',
+  },
 ]
 
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
-  const w = size === 'large' ? (isVideo ? '100%' : project.id === 'bbc' ? '80%' : 'clamp(70%, 90%, 100%)') : isVideo ? '100%' : project.id === 'djamao' ? 'clamp(70px, 12vw, 120px)' : 'clamp(50px, 10vw, 80px)'
-  const h = size === 'large' ? (isVideo ? 'clamp(385px, calc(70vh - 15px), 735px)' : project.id === 'bbc' ? '80%' : 'clamp(300px, 60vh, 500px)') : isVideo ? 'clamp(300px, 50vh, 550px)' : project.id === 'djamao' ? 'clamp(80px, 14vw, 140px)' : 'clamp(60px, 12vw, 90px)'
+  // Tailles par projet : large (sélectionné) | small (inactif)
+  const logoSizes = {
+    sam:    { large: { w: '100%',                 h: 'clamp(385px, calc(70vh - 15px), 735px)' }, small: { w: '100%',                    h: 'clamp(300px, 50vh, 550px)'  } },
+    staeky: { large: { w: 'clamp(36%, 46%, 51%)', h: 'clamp(153px, 30.6vh, 255px)'           }, small: { w: 'clamp(50px, 10vw, 80px)', h: 'clamp(60px, 12vw, 90px)'   } },
+    djamao: { large: { w: 'clamp(52.5%, 67.5%, 75%)', h: 'clamp(225px, 45vh, 375px)'         }, small: { w: 'clamp(70px, 12vw, 120px)',h: 'clamp(80px, 14vw, 140px)'  } },
+    bbc:    { large: { w: '45%',                  h: '45%'                                    }, small: { w: 'clamp(50px, 10vw, 80px)', h: 'clamp(60px, 12vw, 90px)'   } },
+  }
+  const { w, h } = logoSizes[project.id][size]
   const filter = isVideo ? 'none'
     : project.id === 'djamao' ? (!isActive ? 'grayscale(1) brightness(0.15)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
@@ -67,11 +73,24 @@ function ProjectLogo({ project, isActive, size }) {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    transform: inactiveShift ?? (!isVideo && project.id === 'djamao' ? (size !== 'large' ? 'translateY(clamp(-6px, -1vw, -10px))' : 'translateY(clamp(-15px, -2vw, -25px))') : undefined),
+    margin: '0 auto',
+    transform: inactiveShift ?? (!isVideo && project.id === 'djamao' ? (size !== 'large' ? 'translateY(clamp(-6px, -1vw, -10px))' : 'translateY(clamp(-15px, -2vw, -25px))') : (!isVideo && project.id === 'bbc' && size === 'large' ? 'translate(30px, -75px)' : undefined)),
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? `translate(clamp(0px, 2vw, 10px), clamp(-185px, -20vh, -235px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-25px, -15vh, -65px)) scale(1.4)`
+    // Position du bloc entier (inactif uniquement)
+    const blockShift = size !== 'large' ? `translate(clamp(0px, 2vw, 10px), clamp(-185px, -20vh, -235px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-25px, -15vh, -65px))`
+
+    // Disque CD — position et scale indépendants
+    const discX = '6.5px'
+    const discY = '-1px'
+    const discScale = size === 'large' ? 1.08 : 1
+    const discTransform = `scale(${discScale}) translate(${discX}, ${discY})`
+
+    // Cover — position indépendante
+    const coverX = '0px'
+    const coverY = '0px'
+    const coverTransform = `translate(calc(-50% + ${coverX}), calc(-50% + ${coverY}))`
     const videoFilter = size !== 'large' ? 'grayscale(1)' : 'none'
     return (
       <div style={containerStyle}>
@@ -81,7 +100,7 @@ function ProjectLogo({ project, isActive, size }) {
             loop
             muted
             playsInline
-            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(6.5px, -1px)' }}
+            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: discTransform }}
           >
             <source src={project.logo} type="video/webm" />
           </video>
@@ -90,7 +109,7 @@ function ProjectLogo({ project, isActive, size }) {
             <img
               src={project.overlay}
               alt=""
-              style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '95%', height: '95%', objectFit: 'contain', pointerEvents: 'none' }}
+              style={{ position: 'absolute', top: '50%', left: '50%', transform: coverTransform, width: '94%', height: '94%', objectFit: 'contain', pointerEvents: 'none' }}
             />
           )}
         </div>
@@ -233,7 +252,7 @@ export default function ProjetsIndex() {
         flexBasis: activeIndex === null ? 'clamp(30%, 40vw, 60%)' : 'clamp(20%, 30vw, 40%)',
         flexShrink: 0,
         flexGrow: activeIndex === null ? 1 : 0,
-        transition: 'flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1), flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
       }} />
 
       {projects.map((project, i) => {
@@ -247,7 +266,7 @@ export default function ProjetsIndex() {
               flexGrow: isActive ? 1 : 0,
               flexShrink: 0,
               flexBasis: isActive ? 0 : '14%',
-              transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease',
+              transition: 'flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1), flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, padding 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
               backgroundColor: isActive ? project.accent : '#ffffff',
               borderLeft: '1px solid #0a0a0a',
               display: 'flex',
@@ -271,38 +290,68 @@ export default function ProjetsIndex() {
               }}
             />
 
-            {isActive ? (
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', overflow: 'hidden' }}>
-                <h2
-                  style={{
-                    fontFamily: 'var(--font-clash)',
-                    fontWeight: 700,
-                    fontSize: 'clamp(1.6rem, 2.6vw, 2.8rem)',
-                    color: '#ffffff',
-                    textAlign: 'center',
-                    lineHeight: 1.0,
-                    letterSpacing: '-0.01em',
-                    textTransform: 'uppercase',
-                    marginTop: '1.5rem',
-                    flexShrink: 0,
-                  }}
+            <AnimatePresence mode="sync" initial={false}>
+              {isActive ? (
+                <div
+                  key={`active-${project.id}`}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', overflow: 'hidden' }}
                 >
-                  {project.name.split(' ').map((word, j) => (
-                    <span key={j} style={{ display: 'block' }}>{word}</span>
-                  ))}
-                </h2>
-                <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                  <ProjectLogo project={project} isActive size="large" />
+                  <h2
+                    style={{
+                      fontFamily: 'var(--font-clash)',
+                      fontWeight: 700,
+                      fontSize: 'clamp(1.6rem, 2.6vw, 2.8rem)',
+                      color: '#ffffff',
+                      textAlign: 'center',
+                      lineHeight: 1.0,
+                      letterSpacing: '-0.01em',
+                      textTransform: 'uppercase',
+                      marginTop: '1.5rem',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {project.name.split(' ').map((word, j) => (
+                      <span key={j} style={{ display: 'block' }}>{word}</span>
+                    ))}
+                  </h2>
+                  <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={`logo-active-${project.id}`}
+                        initial={{ opacity: 0, scale: 0.88 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.18, ease: [0.4, 0, 1, 1] } }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 24, delay: 0.1 }}
+                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', willChange: 'transform, opacity' }}
+                      >
+                        <ProjectLogo project={project} isActive size="large" />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <>
-                <div style={{ marginTop: '0.75rem' }}>
-                  <ProjectLogo project={project} isActive={false} size="small" />
+              ) : (
+                <div
+                  key={`inactive-${project.id}`}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+                >
+                  <div style={{ marginTop: '0.75rem' }}>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={`logo-inactive-${project.id}`}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.14, ease: [0.4, 0, 1, 1] } }}
+                        transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+                        style={{ willChange: 'transform, opacity' }}
+                      >
+                        <ProjectLogo project={project} isActive={false} size="small" />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                  <div style={{ flex: 1 }} />
                 </div>
-                <div style={{ flex: 1 }} />
-              </>
-            )}
+              )}
+            </AnimatePresence>
 
             <div
               style={{
