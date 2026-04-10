@@ -57,7 +57,14 @@
   --font-clash: "ClashGrotesk", sans-serif;
   --font-cabinet: "CabinetGrotesk", sans-serif;
   --font-satoshi: "Satoshi", sans-serif;
-  --navbar-height: 49px;
+  --navbar-height: clamp(40px, 4vh, 49px);
+  --spacing-xs: clamp(0.25rem, 0.5vw, 0.5rem);
+  --spacing-sm: clamp(0.5rem, 1vw, 1rem);
+  --spacing-md: clamp(1rem, 2vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 3vw, 2.5rem);
+  --spacing-xl: clamp(2rem, 4vw, 3rem);
+  --padding-x: clamp(0.75rem, 3vw, 2rem);
+  --padding-y: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 * {
@@ -101,17 +108,4 @@ button {
 a:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 3px;
-}
-
-/* Responsive adjustments for small screens */
-@media (max-width: 768px) {
-  :root {
-    --navbar-height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --navbar-height: 40px;
-  }
 }

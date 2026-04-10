@@ -7,10 +7,11 @@ const DURATION = 0.35
 export default function VerticalWords({ name, color, size = 60 }) {
   const reduced = useReducedMotion()
   const words = name.split(' ')
-  const wrapH = size * 1.15  // hauteur du wrapper : dépasse lineHeight:1 pour ne pas couper les descentes
+  const responsiveSize = Math.max(30, size)
+  const wrapH = responsiveSize * 1.15  // hauteur du wrapper : dépasse lineHeight:1 pour ne pas couper les descentes
 
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: `${size * 0.15}px`, height: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'clamp(4px, 1.5vw, 10px)', height: '100%' }}>
       {words.map((word, wi) => (
         <div
           key={wi}
@@ -28,7 +29,7 @@ export default function VerticalWords({ name, color, size = 60 }) {
               style={{
                 overflow: 'hidden',
                 height: `${wrapH}px`,
-                paddingLeft: char === 'I' ? `${size * 0.18}px` : 0,
+                paddingLeft: char === 'I' ? `${responsiveSize * 0.18}px` : 0,
               }}
             >
               <motion.span
@@ -42,7 +43,7 @@ export default function VerticalWords({ name, color, size = 60 }) {
                 style={{
                   fontFamily: 'var(--font-clash)',
                   fontWeight: 700,
-                  fontSize: `${size}px`,
+                  fontSize: `${responsiveSize}px`,
                   lineHeight: 1,
                   color,
                   display: 'block',

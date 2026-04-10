@@ -15,7 +15,7 @@ export default function Home() {
       }}
     >
       {/* about me ——→ top right */}
-      <div style={{ position: 'absolute', top: 'clamp(1rem, 5vw, 2rem)', right: 'clamp(1rem, 5vw, 3rem)', zIndex: 3 }}>
+      <div style={{ position: 'absolute', top: 'var(--spacing-lg)', right: 'clamp(var(--spacing-lg), 5%, 10vw)', zIndex: 3 }}>
         <Link
           href="/about"
           style={{
@@ -23,7 +23,7 @@ export default function Home() {
             alignItems: 'center',
             fontFamily: 'var(--font-cabinet)',
             fontWeight: 500,
-            fontSize: 'clamp(0.85rem, 2vw, 1.15rem)',
+            fontSize: 'clamp(1rem, 1.8vw, 1.1rem)',
             color: '#0a0a0a',
             textDecoration: 'none',
           }}
@@ -78,17 +78,18 @@ export default function Home() {
           style={{
             fontFamily: 'var(--font-clash)',
             fontWeight: 600,
-            fontSize: 'clamp(3rem, 12vw, 16rem)',
+            fontSize: 'clamp(3.5rem, 10vw, 20rem)',
             lineHeight: 0.88,
             color: '#0a0a0a',
             letterSpacing: '-0.02em',
-            whiteSpace: 'wrap',
+            whiteSpace: 'normal',
             wordWrap: 'break-word',
             textAlign: 'center',
             textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-            maxWidth: '100vw',
+            maxWidth: '95vw',
             overflowWrap: 'break-word',
             width: '100%',
+            padding: '0 var(--padding-x)',
           }}
         >
           {'DJAMAO PIERRE'.split('').map((char, i) => (
@@ -114,7 +115,7 @@ export default function Home() {
           style={{
             fontFamily: 'var(--font-satoshi)',
             fontWeight: 500,
-            fontSize: '0.85rem',
+            fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
             letterSpacing: '0.25em',
             color: '#0a0a0a',
             marginTop: '1rem',

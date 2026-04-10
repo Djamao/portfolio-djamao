@@ -70,7 +70,7 @@ function NavLink({ href, active, color, children }) {
       href={href}
       style={{
         fontFamily: 'var(--font-clash)',
-        fontSize: 'clamp(14px, 2.5vw, 22px)',
+        fontSize: 'clamp(20px, 2.5vw, 22px)',
         fontWeight: 500,
         color,
         textDecoration: 'none',

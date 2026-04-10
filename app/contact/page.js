@@ -154,7 +154,7 @@ export default function Contact() {
           style={{
             fontFamily: 'var(--font-clash)',
             fontWeight: 700,
-            fontSize: 'clamp(3.5rem, 11vw, 11rem)',
+            fontSize: 'clamp(3.5rem, 11vw, 18rem)',
             lineHeight: 0.88,
             color: '#ffffff',
             letterSpacing: '-0.02em',
@@ -271,7 +271,7 @@ export default function Contact() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-end',
-          padding: 'clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 3vw, 30px)',
+          padding: 'clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 3vw, 10vw)',
           gap: 'clamp(0.5rem, 2vw, 1rem)',
           flexWrap: 'wrap',
         }}

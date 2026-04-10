@@ -10,9 +10,9 @@ export default function Bonsai({ monochrome = false }) {
       style={{
         position: 'absolute',
         bottom: 0,
-        left: '-2rem',
-        width: '38%',
-        height: '72%',
+        left: 'clamp(-1rem, -2vw, 2rem)',
+        width: 'clamp(30%, 40vw, 55%)',
+        height: 'clamp(60%, 70vh, 85%)',
         zIndex: 2,
         pointerEvents: 'none',
       }}
@@ -21,7 +21,7 @@ export default function Bonsai({ monochrome = false }) {
         src="/bonsai.webp"
         alt="Bonsai"
         fill
-        sizes="46vw"
+        sizes="(max-width: 768px) 50vw, 45vw"
         style={{ objectFit: 'contain', objectPosition: 'bottom left', filter }}
         priority
       />

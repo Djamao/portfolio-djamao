@@ -7,6 +7,11 @@ export const metadata = {
   description: 'Portfolio de Djamao Pierre, designer digital français.',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">

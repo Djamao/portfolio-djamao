@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Bonsai from '../components/Bonsai'
+import { useMobile } from '../hooks/useMobile'
 
 const MOI_TEXTS = [
   "Designer digital français, nourri chaque jour par le hiphop. La musique, la mode, la danse, le djing. La spiritualité, les couleurs et la culture japonaise m'alimentent tout autant. Nujabes, Hayao Miyazaki et Nigo côté Japon. Katy_V4, Balo côté français.",
@@ -12,6 +13,7 @@ const MOI_TEXTS = [
 const TOTAL_CHARS = MOI_TEXTS.reduce((acc, t) => acc + t.length, 0)
 
 export default function About() {
+  const isMobile = useMobile()
   const [charCount, setCharCount] = useState(0)
 
   useEffect(() => {
@@ -22,10 +24,10 @@ export default function About() {
           if (c >= TOTAL_CHARS) { clearInterval(interval); return c }
           return c + 1
         })
-      }, 22)
-    }, 1950)
+      }, isMobile ? 12 : 22)
+    }, isMobile ? 400 : 1950)
     return () => { clearTimeout(timeout); clearInterval(interval) }
-  }, [])
+  }, [isMobile])
 
   let rem = charCount
   const visibleTexts = MOI_TEXTS.map(text => {
@@ -34,6 +36,80 @@ export default function About() {
     return text.slice(0, vis)
   })
 
+  // — MOBILE —
+  if (isMobile) {
+    return (
+      <main
+        style={{
+          height: 'calc(100vh - var(--navbar-height))',
+          width: '100%',
+          backgroundColor: '#ffffff',
+          overflowY: 'auto',
+          position: 'relative',
+        }}
+      >
+        <div style={{ padding: 'var(--spacing-md) var(--padding-x) var(--spacing-xl)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+          {/* COMPÉTENCES */}
+          <div>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontWeight: 600, fontSize: '0.875rem', textTransform: 'uppercase', color: '#0a0a0a', marginBottom: '0.75rem' }}>
+              COMPÉTENCES
+            </p>
+            {['UI Design', 'UX Design', 'Motion design'].map((s) => (
+              <p key={s} style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#0a0a0a', lineHeight: 1.6 }}>{s}</p>
+            ))}
+          </div>
+
+          {/* LOGICIELS */}
+          <div>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontWeight: 600, fontSize: '0.875rem', textTransform: 'uppercase', color: '#0a0a0a', marginBottom: '0.75rem' }}>
+              LOGICIELS
+            </p>
+            {['Figma', 'Photoshop', 'After Effect', 'Illustrator'].map((s) => (
+              <p key={s} style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.875rem', color: '#0a0a0a', lineHeight: 1.6 }}>{s}</p>
+            ))}
+          </div>
+
+          {/* MOI */}
+          <div>
+            <p style={{ fontFamily: 'var(--font-cabinet)', fontWeight: 600, fontSize: '0.875rem', textTransform: 'uppercase', color: '#0a0a0a', marginBottom: '0.75rem' }}>
+              MOI
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {MOI_TEXTS.map((fullText, i) => (
+                <div key={i} style={{ position: 'relative' }}>
+                  <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.845rem', lineHeight: 1.5, visibility: 'hidden' }}>
+                    {fullText}
+                  </p>
+                  <p style={{ position: 'absolute', top: 0, left: 0, width: '100%', fontFamily: 'var(--font-satoshi)', fontSize: '0.845rem', color: '#0a0a0a', lineHeight: 1.5 }}>
+                    {visibleTexts[i]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* projets → */}
+        <Link
+          href="/projets"
+          style={{
+            display: 'block',
+            textAlign: 'right',
+            padding: '0 var(--padding-x) var(--spacing-md)',
+            fontFamily: 'var(--font-cabinet)',
+            fontWeight: 500,
+            fontSize: '1rem',
+            color: '#0a0a0a',
+            textDecoration: 'none',
+          }}
+        >
+          projets →
+        </Link>
+      </main>
+    )
+  }
+
+  // — DESKTOP —
   return (
     <main
       style={{
@@ -51,9 +127,10 @@ export default function About() {
         style={{
           flex: 1,
           display: 'grid',
-          gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 1fr)',
+          gridTemplateColumns: 'minmax(0, 1.8fr) minmax(0, 1fr)',
           minHeight: 0,
           width: '100%',
+          gap: 0,
         }}
       >
         {/* Left — animation + ABOUT ME flottant */}
@@ -64,7 +141,7 @@ export default function About() {
           style={{
             position: 'relative',
             overflow: 'hidden',
-            marginLeft: 'clamp(-3rem, -5vw, -7rem)',
+            marginLeft: 'clamp(-1rem, -2vw, -2rem)',
             minWidth: 0,
           }}
         >
@@ -80,8 +157,8 @@ export default function About() {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'left center',
-              transform: 'scale(0.88) translate(-4%, 5%)',
+              objectPosition: 'center center',
+              transform: 'scale(0.95)',
               transformOrigin: 'center center',
             }}
           >
@@ -95,15 +172,15 @@ export default function About() {
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            padding: 'clamp(2rem, 5vw, 6.5rem) clamp(1rem, 3vw, 30px) clamp(1rem, 2vw, 2rem) clamp(1rem, 2vw, 2rem)',
-            gap: 'clamp(1rem, 2vw, 2rem)',
+            padding: 'var(--spacing-xl) var(--padding-x) var(--spacing-md) var(--spacing-md)',
+            gap: 'clamp(1rem, 1.5vw, 1.5rem)',
             alignContent: 'space-between',
             minWidth: 0,
-            overflow: 'hidden',
+            overflow: 'auto',
           }}
         >
           {/* COMPÉTENCES + LOGICIELS */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginLeft: '-1.5rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(2rem, 8vw, 5rem)', marginLeft: 'clamp(-0.75rem, -1vw, -1.5rem)' }}>
             <div>
               <p style={{ fontFamily: 'var(--font-cabinet)', fontWeight: 600, fontSize: '0.875rem', letterSpacing: 0, textTransform: 'uppercase', color: '#0a0a0a', marginBottom: '40px' }}>
                 {'COMPÉTENCES'.split('').map((char, i) => (
@@ -143,7 +220,7 @@ export default function About() {
                   <motion.span key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 + i * 0.4, duration: 0.2, ease: 'easeOut' }} style={{ display: 'inline-block', whiteSpace: 'pre' }}>{char}</motion.span>
                 ))}
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '170px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: 'clamp(140px, 90%, 200px)' }}>
                 {MOI_TEXTS.map((fullText, i) => (
                   <div key={i} style={{ position: 'relative' }}>
                     <p style={{ fontFamily: 'var(--font-satoshi)', fontSize: '0.845rem', lineHeight: 1.23, letterSpacing: 0, visibility: 'hidden' }}>
@@ -159,13 +236,14 @@ export default function About() {
           </div>
         </div>
       </div>
+
       {/* projet → bottom right */}
       <Link
         href="/projets"
         style={{
           position: 'absolute',
           bottom: 'clamp(2px, 1vw, 5px)',
-          right: 'clamp(1rem, 3vw, 30px)',
+          right: 'clamp(var(--spacing-lg), 5%, 10vw)',
           zIndex: 3,
           fontFamily: 'var(--font-cabinet)',
           fontWeight: 500,
