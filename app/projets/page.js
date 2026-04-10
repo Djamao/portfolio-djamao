@@ -81,7 +81,7 @@ function ProjectLogo({ project, isActive, size }) {
             loop
             muted
             playsInline
-            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(2.5px, -1px)' }}
+            style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'translate(12.5px, -1px)' }}
           >
             <source src={project.logo} type="video/webm" />
           </video>
@@ -90,7 +90,7 @@ function ProjectLogo({ project, isActive, size }) {
             <img
               src={project.overlay}
               alt=""
-              style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%', objectFit: 'contain', pointerEvents: 'none' }}
+              style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '95%', height: '95%', objectFit: 'contain', pointerEvents: 'none' }}
             />
           )}
         </div>
