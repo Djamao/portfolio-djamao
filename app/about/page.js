@@ -242,7 +242,7 @@ export default function About() {
         href="/projets"
         style={{
           position: 'absolute',
-          bottom: 'clamp(2px, 1vw, 5px)',
+          bottom: 'var(--spacing-lg)',
           right: 'clamp(var(--spacing-lg), 5%, 10vw)',
           zIndex: 3,
           fontFamily: 'var(--font-cabinet)',
