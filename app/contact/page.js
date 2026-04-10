@@ -202,7 +202,7 @@ export default function Contact() {
             display: 'flex',
             flexDirection: 'column',
             gap: 'clamp(1.5rem, 4vw, 3.5rem)',
-            width: '50%',
+            width: '38%',
             padding: '0 clamp(1rem, 2vw, 2rem)',
           }}
         >
