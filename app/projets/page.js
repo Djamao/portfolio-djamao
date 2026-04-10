@@ -71,7 +71,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? `translate(clamp(10px, 2vw, 20px), clamp(-150px, -20vh, -200px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-100px, -15vh, -140px)) scale(1.4)`
+    const blockShift = size !== 'large' ? `translate(clamp(10px, 2vw, 20px), clamp(-170px, -20vh, -220px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-100px, -15vh, -140px)) scale(1.4)`
     return (
       <div style={containerStyle}>
         <div style={{ position: 'relative', width: '100%', height: '100%', transform: blockShift }}>
