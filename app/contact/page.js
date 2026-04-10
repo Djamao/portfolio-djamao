@@ -153,7 +153,7 @@ export default function Contact() {
           }}
           style={{
             fontFamily: 'var(--font-clash)',
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: 'clamp(3.5rem, 11vw, 18rem)',
             lineHeight: 0.88,
             color: '#ffffff',
