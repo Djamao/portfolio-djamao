@@ -52,8 +52,8 @@ const projects = [
 
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
-  const w = size === 'large' ? (isVideo ? '100%' : 'clamp(70%, 90%, 100%)') : isVideo ? '100%' : project.id === 'djamao' ? 'clamp(70px, 12vw, 120px)' : 'clamp(50px, 10vw, 80px)'
-  const h = size === 'large' ? (isVideo ? 'clamp(385px, calc(70vh - 15px), 735px)' : 'clamp(300px, 60vh, 500px)') : isVideo ? 'clamp(300px, 50vh, 550px)' : project.id === 'djamao' ? 'clamp(80px, 14vw, 140px)' : 'clamp(60px, 12vw, 90px)'
+  const w = size === 'large' ? (isVideo ? '100%' : project.id === 'bbc' ? '80%' : 'clamp(70%, 90%, 100%)') : isVideo ? '100%' : project.id === 'djamao' ? 'clamp(70px, 12vw, 120px)' : 'clamp(50px, 10vw, 80px)'
+  const h = size === 'large' ? (isVideo ? 'clamp(385px, calc(70vh - 15px), 735px)' : project.id === 'bbc' ? '80%' : 'clamp(300px, 60vh, 500px)') : isVideo ? 'clamp(300px, 50vh, 550px)' : project.id === 'djamao' ? 'clamp(80px, 14vw, 140px)' : 'clamp(60px, 12vw, 90px)'
   const filter = isVideo ? 'none'
     : project.id === 'djamao' ? (!isActive ? 'grayscale(1) brightness(0.15)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
