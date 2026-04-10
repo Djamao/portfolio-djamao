@@ -71,7 +71,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? `translate(clamp(0px, 2vw, 10px), clamp(-185px, -20vh, -235px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-70px, -15vh, -110px)) scale(1.4)`
+    const blockShift = size !== 'large' ? `translate(clamp(0px, 2vw, 10px), clamp(-185px, -20vh, -235px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-40px, -15vh, -80px)) scale(1.4)`
     const videoFilter = size !== 'large' ? 'grayscale(1)' : 'none'
     return (
       <div style={containerStyle}>
