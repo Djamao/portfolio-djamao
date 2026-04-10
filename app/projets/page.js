@@ -53,7 +53,7 @@ const projects = [
 function ProjectLogo({ project, isActive, size }) {
   const isVideo = project.logoType === 'video'
   const w = size === 'large' ? (isVideo ? '100%' : 'clamp(70%, 90%, 100%)') : isVideo ? '100%' : project.id === 'djamao' ? 'clamp(70px, 12vw, 120px)' : 'clamp(50px, 10vw, 80px)'
-  const h = size === 'large' ? (isVideo ? 'clamp(400px, 70vh, 750px)' : 'clamp(300px, 60vh, 500px)') : isVideo ? 'clamp(130px, 25vh, 280px)' : project.id === 'djamao' ? 'clamp(80px, 14vw, 140px)' : 'clamp(60px, 12vw, 90px)'
+  const h = size === 'large' ? (isVideo ? 'clamp(400px, 70vh, 750px)' : 'clamp(300px, 60vh, 500px)') : isVideo ? 'clamp(300px, 50vh, 550px)' : project.id === 'djamao' ? 'clamp(80px, 14vw, 140px)' : 'clamp(60px, 12vw, 90px)'
   const filter = isVideo ? 'none'
     : project.id === 'djamao' ? (!isActive ? 'grayscale(1) brightness(0.15)' : 'none')
     : isActive ? 'brightness(0) invert(1)' : 'none'
@@ -71,7 +71,7 @@ function ProjectLogo({ project, isActive, size }) {
   }
 
   if (project.logoType === 'video') {
-    const blockShift = size !== 'large' ? `translate(clamp(10px, 2vw, 20px), clamp(-150px, -20vh, -200px)) scale(1.4)` : `translate(clamp(25px, 3vw, 40px), clamp(-100px, -15vh, -140px)) scale(1.4)`
+    const blockShift = size !== 'large' ? `translate(clamp(10px, 2vw, 20px), clamp(-150px, -20vh, -200px)) scale(0.7)` : `translate(clamp(25px, 3vw, 40px), clamp(-100px, -15vh, -140px)) scale(1.4)`
     return (
       <div style={containerStyle}>
         <div style={{ position: 'relative', width: '100%', height: '100%', transform: blockShift }}>
